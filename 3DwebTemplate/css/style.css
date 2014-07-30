@@ -95,7 +95,7 @@ a:hover{text-decoration:none}
 	margin-right: auto;
 	top: 55px;
 	left:15%;
-	height:1350px;
+	/*height:1350px;*/
 	overflow:hidden;
 	background-color: #F3F0F3;
 	border-style:solid; 
@@ -187,7 +187,7 @@ a:hover{text-decoration:none}
 
 
 #footer {
-	margin-top: 1410px;
+	/*margin-top: 1410px;*/
 	height:125px;
 	/*background:url(../images/footer-tail.gif) 0 0 repeat-x;*/
 	background-color: rgb(228, 175, 9);
@@ -198,4 +198,9 @@ a:hover{text-decoration:none}
 	font-family: fantasy;
 }
 
+
+.aboutdetail{
+	margin-left: auto;
+	margin-right: auto;
+}
 

@@ -48,7 +48,7 @@ a:hover{text-decoration:none}
 	font-size: .875em;
 	background-color: #000;*/
 	height: 50px;
-	position: absolute;
+	/*position: absolute;*/
 	left: 0px;
 	right: 0px;
 	top: 0px;
@@ -83,41 +83,25 @@ a:hover{text-decoration:none}
 #header .nav li a:hover, #header .nav li a.current {color:#fff;text-decoration:none}
 
 #loadingAnimation{
-	/*margin-left: auto;
-	margin-right: auto;*/
-	width:980px;
-}
-
-
-.cbg{
-	position: absolute;
 	margin-left: auto;
 	margin-right: auto;
-	top: 55px;
-	left:15%;
-	height:1350px;
-	overflow:hidden;
-	background-color: #F3F0F3;
-	border-style:solid; 
-	border-width:1px; 
-	border-color:#94ADBD;
-}
-
-/*#content{
-	float:left;
-}
-*/
-#loadingAnimation img {
-
-	padding: 5px 0 0 0;
 	width:980px;
+}
+
+
+.container{
+	width:100%!important;
+}
+
+
+#loadingAnimation img {
+		width:980px;
 
 
 }
 
 #content .wrapper .inlinewords{
-	position: absolute;
-	top:465px;
+	margin:5px 0 0 0;
 	width:100%;
 	
 }
@@ -148,8 +132,6 @@ a:hover{text-decoration:none}
 
 #content .wrapper .inlinewords h3{
 	color:#FFF;
-	/*font-size: 35px;*/
-	/*padding-top: 20px;*/
 	line-height:0.9em;
 	font: normal normal normal 42px/1.4em 'arial black', arial-w01-black, arial-w02-black, 'arial-w10 black', sans-serif;
 }
@@ -160,15 +142,9 @@ a:hover{text-decoration:none}
 
 }
 
-
-
-
-
-
-
 .photos{
-	margin-top: 420px;
-	margin-left: 20px;
+	margin-left: 260px;
+	margin-top: 5px;
 
 }
 .photos a {
@@ -181,21 +157,127 @@ a:hover{text-decoration:none}
 	width:410px;
 	height:230px;
 	padding: 8px;
-	/*border:1px solid #D6D1D1;*/
 	border:1px solid #D6D1D1;-moz-box-shadow:3px 3px 4px #000;-webkit-box-shadow:3px 3px 4px #000;box-shadow:3px 3px 4px #000;background:#fff;filter:progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#000000');
 }
 
 
 #footer {
-	margin-top: 1410px;
+	margin-top: 5px;
+	width:100%;
 	height:125px;
-	/*background:url(../images/footer-tail.gif) 0 0 repeat-x;*/
 	background-color: rgb(228, 175, 9);
 }
 #footer .indent{
 	padding:20px 0 0 180px;
 	color:#000;
 	font-family: fantasy;
+	font-size: 15px;
 }
+
+
+.aboutdetail{
+	width:74%;
+	text-align: justify;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.votedetail{
+	width:80%;
+	text-align: justify;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.votedetail h2{
+	height:40px;
+	background-color:rgb(233, 231, 215);
+	padding: 10px 0 0 0;
+}
+
+.votedetail .votelist {
+	margin: 25px 0 0 60px;
+	padding: 10px 0 0 0;
+	float:left;
+	width:180px;
+	height:300px;
+	background-color: #EBC74A;
+	text-align: center;
+}
+
+.votedetail .votelist img{
+		width:150px;
+		height:120px;
+		border:1px solid #D6D1D1;-moz-box-shadow:3px 3px 4px #000;-webkit-box-shadow:3px 3px 4px #000;box-shadow:3px 3px 4px #000;background:#fff;filter:progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#000000');
+
+}
+
+.votedetail .votelist .info{
+	padding: 20px 0 0 0;
+}
+
+.dislist{
+	clear: both;
+	padding-top: 20px;
+	text-align: center;
+}
+
+.workdetail {
+	width:80%;
+	text-align: justify;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.worklist .model-meta {
+	background: #fff;
+	display: block;
+	background-color: yellow;
+	text-align: center;
+	
+
+}
+
+ul.thumbnails>li {
+	list-style: none;
+	float: left;
+	margin: 20px 0 0 20px;
+	padding: auto;
+	width: 185px;
+	background: #fff;
+	border: 1px solid #ddd;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	box-shadow: 0 0 2px rgba(0,0,0,.1),0 2px 2px rgba(0,0,0,.1);
+	_position: relative;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=180, Color='#969696')";
+}
+.model-thumbnail{
+	border:1px solid #D6D1D1;-moz-box-shadow:3px 3px 4px #000;-webkit-box-shadow:3px 3px 4px #000;box-shadow:3px 3px 4px #000;background:#fff;filter:progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#000000');
+
+}
+.model-thumbnail a img{
+	width:100%;
+}
+
+.registerinfo .form-control{
+	width:40%;
+}
+
+.logininfo .form-control{
+	width:30%;
+}
+
+.register , .login{
+	width:70%;
+	text-align: justify;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 
 

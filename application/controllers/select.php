@@ -28,20 +28,23 @@ class Select extends CI_Controller {
 		
 		
 
-		if($menu == "homepage"){
+		if($menu == "home"){
 			$this->load->view('index.php');
 		}
 		if($menu == "about"){
 			$this->load->view('about.php');
 		}
-		if($menu == "role"){
-			$this->load->view('roles.php');
+		if($menu == "work"){
+			$this->load->view('work.php');
 		}
-		if($menu == "article"){
-			$this->load->view('article.php');
+		if($menu == "vote"){
+			$this->load->view('vote.php');
 		}
-		if($menu == "portfolio"){
-			$this->load->view('portfolio.php');
+		if($menu == "register"){
+			$this->load->view('register.php');
+		}
+		if($menu == "login"){
+			$this->load->view('login.php');
 		}
 		if($menu == "contact"){
 			$this->load->view('contact.php');

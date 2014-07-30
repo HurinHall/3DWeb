@@ -1,6 +1,7 @@
 <?php   
     $baseurl=base_url();   
     $public =$baseurl.'public/'; 
+    $basesite=site_url()."/";
 ?>
 
 <!DOCTYPE html>
@@ -27,36 +28,17 @@
 </head>
 
 <body>
-<!-- header -->
-    <div id="header">
-        <div class="bg">
-            <div class="container">
+<?php 
 
-                <div class="row-1">
-                   <p>hello world</p>
-                </div>
-              
-                <div class="row-2">
-                    <!-- .nav -->
-                    <ul class="nav">
-                        <li><a href="index.html" class="current">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="support.html">Support</a></li>
-                        <li><a href="contacts.html">contacts</a></li>       
-                    </ul>
-                    <!-- /.nav -->
-                </div>
-             
-            </div>
-        </div>
-    </div>
+  $this->load->view('menupart.php');
+?>
+
   
 <!-- content -->
     <div id="content">
         <div class="container">
             <div class="wrapper">
-                <div class="cbg">
+               
                     <div id="loadingAnimation">
                            
                         <img src="<?php echo $public?>images/peacock.jpg"  />
@@ -68,6 +50,19 @@
                     <script>$('#loadingAnimation').jqFancyTransitions({ navigation: false, links : false });</script>
 
 
+                    <div class="inlinewords">
+                        <div class="words">
+                                ﻿​﻿<h3 class="rightside">"THE DETAILS ARE﻿﻿  </h3><div style="clear:both"></div>
+                                <h3 class="rightside">NOT THE DETAILS.</h3><div style="clear:both"></div>
+                                <h3 class="rightside">THEY MAKE </h3><div style="clear:both"></div>
+                                <h3 class="rightside">THE DESIGN."</h3><div style="clear:both"></div>
+                                <h3 class="rightside">CHARLES EAMES</h3> 
+                        </div>
+
+                        <div class="mywork">
+                                 <h2>MY WORK</h2> 
+                        </div>                    
+                    </div>
                 
                     <div class="photos">
 
@@ -89,21 +84,8 @@
 
                    
 
-                </div>
+                
 
-                <div class="inlinewords">
-                    <div class="words">
-                            ﻿​﻿<h3 class="rightside">"THE DETAILS ARE﻿﻿  </h3><div style="clear:both"></div>
-                            <h3 class="rightside">NOT THE DETAILS.</h3><div style="clear:both"></div>
-                            <h3 class="rightside">THEY MAKE </h3><div style="clear:both"></div>
-                            <h3 class="rightside">THE DESIGN."</h3><div style="clear:both"></div>
-                            <h3 class="rightside">CHARLES EAMES</h3> 
-                    </div>
-
-                    <div class="mywork">
-                             <h2>MY WORK</h2> 
-                    </div>                    
-                </div>
 
                 
 
@@ -114,16 +96,9 @@
     </div>
     <div clear="both"></div>
 <!-- footer -->
-    <div id="footer">
-        <div class="fbg">
-            <div class="container">
-                <div class="indent">
-                    Copyright - Type in your name here  - Collect from <a href="#" title="3D website">3D website</a>
-                </div>
-            
-            </div>  
-        </div>
-    </div>
+<?php 
+  $this->load->view('footpart.php');
+?>
     
    
 </body>
