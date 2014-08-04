@@ -14,6 +14,8 @@
     <script type="text/javascript" src="<?php echo $public?>js/libs/jquery-1.9.0.js"></script>
     <script type="text/javascript" src="<?php echo $public?>js/libs/stats.js"></script>
     <script type="text/javascript" src="<?php echo $public?>js/libs/dat.gui.js"></script>
+    <script type="text/javascript" src="<?php echo $public?>js/libs/OrbitControls.js"></script>
+
     <style>
         body {
             /* set margin to 0 and overflow to hidden, to go fullscreen */
@@ -56,6 +58,11 @@
         camera.position.z = 150;
         camera.lookAt(new THREE.Vector3(0, 40, 0));
 
+
+        var orbitControls = new THREE.OrbitControls(camera);
+        orbitControls.autoRotate = true;
+        var clock = new THREE.Clock();
+
         // add spotlight for the shadows
         var spotLight = new THREE.SpotLight(0xffffff);
         spotLight.position.set(150, 150, 150);
@@ -97,6 +104,8 @@
 
         function render() {
             stats.update();
+            var delta = clock.getDelta();
+            orbitControls.update(delta);
 
             if (group) {
                 group.rotation.z += 0.006;
