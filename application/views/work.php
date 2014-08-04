@@ -1,6 +1,8 @@
 <?php   
     $baseurl=base_url();   
     $public =$baseurl.'public/'; 
+    $basesite=site_url()."/";
+
 ?>
 
 <!DOCTYPE html>
@@ -41,359 +43,87 @@
                <div class="workdetail">
                   <h2>What work created by you?</h2>
 
+                 
+                    <!--<ul class="thumbnails">
+
+
+                         <li class="thumbnail">
+                          <div class="model-thumbnail">
+                            <a  rel="group" title="Here is a short caption." href="<?php echo $basesite.'select/getVeiw/123'?>">
+                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
+                              <hr>
+                              <span class="model-meta">EXAMPLE</span>      
+                            </a> 
+                          </div>
+                        </li> 
+
+                         <div> 
+
+                        </ul>
+                      -->
                   <div class="worklist">
-                    <ul class="thumbnails">
+                 
+                    <div class="img">
+                     <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
+                    </div>
+                  </div>       
+                  <div class="worklist">
+                 
+                    <div class="img">
+                     <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
+                    </div>
+                  </div>      
+                  <div class="worklist">
+                 
+                    <div class="img">
+                     <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
+                    </div>
+                  </div>      
+                  <div class="worklist">
+                 
+                    <div class="img">
+                     <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
+                    </div>
+                  </div>      
+                  <div class="worklist">
+                 
+                    <div class="img">
+                     <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
+                    </div>
+                  </div>      
+                  <div class="worklist">
+                 
+                    <div class="img">
+                     <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
+                    </div>
+                  </div>      
+                  <div class="worklist">
+                 
+                    <div class="img">
+                     <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
+                    </div>
+                  </div>      
+                  <div class="worklist">
+                 
+                    <div class="img">
+                     <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
+                    </div>
+                  </div>      
+                  <div class="worklist">
+                 
+                    <div class="img">
+                     <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
+                    </div>
+                  </div>      
+                  <div class="worklist">
+                 
+                    <div class="img">
+                     <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
+                    </div>
+                  </div>      
 
 
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="#">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
-
-                        <li class="thumbnail">
-                          <div class="model-thumbnail">
-                            <a a rel="group" title="Here is a short caption." href="<?php echo $public?>images/koi.jpg">
-                              <img class="scrollloading" data-url="<?php echo $public?>images/koi.jpg" src="<?php echo $public?>images/koi.jpg"  width="180" height="200" style="background:url(<?php echo $public?>images/loading2.gif) no-repeat center;"   >
-                              <hr>
-                              <span class="model-meta">EXAMPLE</span>      
-                            </a> 
-                          </div>
-                        </li> 
+                        
 
 
 
@@ -405,7 +135,7 @@
 
 
 
-                    </ul>
+                  
 
 
 

@@ -52,8 +52,14 @@ class Select extends CI_Controller {
 
 	}
 
+	public function getVeiw($designid){
+			$this->load->view('stlmodelview.php',$designid);
+		
 
-	public function role($menu){
+	}
+
+
+/*	public function role($menu){
 		
 		$this->load->model('Base_model');
         $data= $this->Base_model->get_role_names();
@@ -65,7 +71,7 @@ class Select extends CI_Controller {
 		
 		
 
-	}
+	}*/
 
 }
 
