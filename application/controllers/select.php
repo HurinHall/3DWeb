@@ -35,7 +35,7 @@ class Select extends CI_Controller {
 			$this->load->view('about.php');
 		}
 		if($menu == "work"){
-			$this->load->view('work.php');
+			$this->load->view('work1.php');
 		}
 		if($menu == "vote"){
 			$this->load->view('vote.php');

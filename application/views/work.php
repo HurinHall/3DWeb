@@ -12,6 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <link href="<?php echo $public?>css/style.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $public?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo $public?>css/jquery.fancybox.css" media="screen" />
 <script type="text/javascript" src="<?php echo $public?>js/jquery-1.3.2.min.js"></script>
 
@@ -41,7 +42,7 @@
         <div class="container">
             <div class="wrapper">
                <div class="workdetail">
-                  <h2>What work created by you?</h2>
+                  <h1>What work created by you?</h1>
 
                  
                     <!--<ul class="thumbnails">
@@ -66,80 +67,106 @@
                     <div class="img">
                      <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
                     </div>
+                    <br />
+                    title
                   </div>       
                   <div class="worklist">
                  
                     <div class="img">
                      <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
                     </div>
+                    <br />
+                    title
                   </div>      
                   <div class="worklist">
                  
                     <div class="img">
                      <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
                     </div>
+                    <br />
+                    title
                   </div>      
                   <div class="worklist">
                  
                     <div class="img">
                      <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
                     </div>
+                    <br />
+                    title
                   </div>      
                   <div class="worklist">
                  
                     <div class="img">
                      <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
                     </div>
+                    <br />
+                    title
                   </div>      
                   <div class="worklist">
                  
                     <div class="img">
                      <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
                     </div>
+                    <br />
+                    title
                   </div>      
                   <div class="worklist">
                  
                     <div class="img">
                      <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
                     </div>
+                    <br />
+                    title
                   </div>      
                   <div class="worklist">
                  
                     <div class="img">
                      <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
                     </div>
+                    <br />
+                    title
                   </div>      
                   <div class="worklist">
                  
                     <div class="img">
                      <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
                     </div>
+                    <br />
+                    title
                   </div>      
                   <div class="worklist">
                  
                     <div class="img">
-                     <a href="<?php echo $basesite.'select/getVeiw/123'?>"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
+                     <a data-toggle="modal" href="#contact"> <img src="<?php echo $public?>images/vote1.jpg"   /></a>
                     </div>
+                    <br />
+                    title
                   </div>      
-
-
-                        
-
-
-
-                       
-                        
-
-
-
-
-
-
                   
 
+               
+            </div>
+        </div>
+    </div>
+    <div clear="both"></div>
+    		<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close">&times;</button>
+          <h2 class="modal-title">Contact</h2>
+        </div>
+        <div class="modal-body">
+        <br />
 
-
-
+      	<br />
+        </div> 
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+    <br />
+                  <br />
+                  <br />
                   </div>
                   <script type="text/javascript" ssrc="<?php echo $public?>js/jquery-1.3.2.min.js"></script>
 
@@ -149,12 +176,6 @@
                     $(".scrollloading2").scrollloading2();  
                   });
                   </script>
-
-               
-            </div>
-        </div>
-    </div>
-    <div clear="both"></div>
 <!-- footer -->
 <?php 
   $this->load->view('footpart.php');

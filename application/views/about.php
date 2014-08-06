@@ -21,12 +21,14 @@
 
   $this->load->view('menupart.php');
 ?>
-  
+
 <!-- content -->
     <div id="content">
         <div class="container">
             <div class="wrapper">
                <div class="aboutdetail">
+               <br />
+               <br />
                 <h2>技术原理</h2>
 <p></p>
 <p>
@@ -80,7 +82,6 @@
 <?php 
   $this->load->view('footpart.php');
 ?>
-    
    
 </body>
 </html>
