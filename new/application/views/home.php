@@ -50,9 +50,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Work</a></li>
+            <li class="active"><a href="<?=base_url('/');?>">Home</a></li>
+            <li><a href="<?=base_url('/about');?>">About</a></li>
+            <li><a href="<?=base_url('/work');?>">Work</a></li>
            <li><a href="#">Vote</a></li>
            <li><a href="#">Contact</a></li>
           </ul>
@@ -90,7 +90,6 @@
     </div>
     
     <div class="container">
-      <!-- Example row of columns -->
       <div class="row photos">
         <div class="col-md-4">
         	<a rel="group" href="<?=base_url('/images/3_b.jpg');?>"> 
