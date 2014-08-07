@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Work -- 3D website</title>
+    <title>Vote -- 3D website</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?=base_url('/css/bootstrap.min.css');?>" rel="stylesheet">
@@ -41,11 +41,11 @@
           <ul class="nav navbar-nav">
             <li><a href="<?=base_url('/');?>">Home</a></li>
             <li><a href="<?=base_url('/about');?>">About</a></li>
-            <li class="active"><a href="<?=base_url('/work');?>">Work</a></li>
-           <li><a href="<?=base_url('/vote');?>">Vote</a></li>
-           <li><a href="<?=base_url('/vote');?>">BBS</a></li>
-           <li><a href="<?=base_url('/contact');?>">Contact</a></li>
-          </ul>
+            <li><a href="<?=base_url('/work');?>">Work</a></li>
+            <li class="active"><a href="<?=base_url('/vote');?>">Vote</a></li>
+            <li><a href="<?=base_url('/vote');?>">BBS</a></li>
+            <li><a href="<?=base_url('/contact');?>">Contact</a></li>
+           </ul>
          
           <form class="navbar-form navbar-right" role="form">
             <div class="form-group">
@@ -65,7 +65,7 @@
 	<div class="container">
 	
 	<div class="page-header">
-	      <h1>Which Work Created By You ?</h1>
+	      <h1>The Most Popular 3D Design In 2014</h1>
 	</div>
 	  
 	<div class="row">
@@ -74,8 +74,8 @@
 				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
 				<div class="caption">
 					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+					<p class="text-danger">Vote: 100</p>
+					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
 				</div>
 			</div>
 		</div>
@@ -84,8 +84,8 @@
 				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
 				<div class="caption">
 					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+					<p class="text-danger">Vote: 100</p>
+					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
 				</div>
 			</div>
 		</div>
@@ -94,8 +94,8 @@
 				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
 				<div class="caption">
 					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+					<p class="text-danger">Vote: 100</p>
+					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
 				</div>
 			</div>
 		</div>
@@ -104,8 +104,8 @@
 				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
 				<div class="caption">
 					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+					<p class="text-danger">Vote: 100</p>
+					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
 				</div>
 			</div>
 		</div>
@@ -114,8 +114,8 @@
 				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
 				<div class="caption">
 					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+					<p class="text-danger">Vote: 100</p>
+					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
 				</div>
 			</div>
 		</div>
@@ -124,8 +124,8 @@
 				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
 				<div class="caption">
 					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+					<p class="text-danger">Vote: 100</p>
+					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
 				</div>
 			</div>
 		</div>
@@ -134,8 +134,8 @@
 				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
 				<div class="caption">
 					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+					<p class="text-danger">Vote: 100</p>
+					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
 				</div>
 			</div>
 		</div>
@@ -144,8 +144,8 @@
 				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
 				<div class="caption">
 					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+					<p class="text-danger">Vote: 100</p>
+					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
 				</div>
 			</div>
 		</div>

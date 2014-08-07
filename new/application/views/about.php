@@ -43,8 +43,9 @@
             <li><a href="<?=base_url('/');?>">Home</a></li>
             <li class="active"><a href="<?=base_url('/about');?>">About</a></li>
             <li><a href="<?=base_url('/work');?>">Work</a></li>
-           <li><a href="#">Vote</a></li>
-           <li><a href="#">Contact</a></li>
+           <li><a href="<?=base_url('/vote');?>">Vote</a></li>
+           <li><a href="<?=base_url('/vote');?>">BBS</a></li>
+           <li><a href="<?=base_url('/contact');?>">Contact</a></li>
           </ul>
          
           <form class="navbar-form navbar-right" role="form">
@@ -55,6 +56,7 @@
               <input type="password" placeholder="Password" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
+            <a class="btn btn-success">Register</a>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
