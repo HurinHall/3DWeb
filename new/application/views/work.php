@@ -205,7 +205,7 @@
         var camera = new THREE.PerspectiveCamera(40, 500 / 400, 1, 1000);
         // create a render and set the size
         var webGLRenderer = new THREE.WebGLRenderer();
-        webGLRenderer.setClearColorHex(0x000, 1.0);
+        webGLRenderer.setClearColorHex(0xcccccc, 1.0);
         webGLRenderer.setSize(500, 400);
         webGLRenderer.shadowMapEnabled = true;
         // position and point the camera to the center of the scene
