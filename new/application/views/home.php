@@ -66,7 +66,7 @@
               <input type="password" placeholder="Password" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
-            <a class="btn btn-success">Register</a>
+            <a class="btn btn-success" href="<?=base_url('/register');?>">Register</a>
           </form>
         </div><!--/.navbar-collapse -->
       </div>

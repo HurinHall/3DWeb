@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Contact -- 3D website</title>
+    <title>Register -- 3D website</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?=base_url('/css/bootstrap.min.css');?>" rel="stylesheet">
@@ -65,26 +65,61 @@
       
 	<div class="container">
       <div class="page-header">
-	      <h1>Contact</h1>
+	      <h1>Register</h1>
 	  </div>
-	  <blockquote>
-      <address>
-	      <strong>Twitter, Inc.</strong><br>
-	      795 Folsom Ave, Suite 600<br>
-	      San Francisco, CA 94107<br>
-	      <abbr title="Phone">P:</abbr> (123) 456-7890
-	      <strong>Full Name</strong><br>
-	      <a href="mailto:#">first.last@example.com</a>
-	  </address>
-	  </blockquote>
-	  <br />
-	  <br />
-	  <br />
-	  <br />
-	  <br />
-	  <br />
-	  <br />
-	  <br />
+      <div class="well well-lg">
+      	<br />
+      	<br />
+      	<center>
+	      <div class="row" style="max-width:340px;">
+	      	<form class="form-horizontal" role="form" action="<?=base_url('/register/send');?>" method="post">
+	      		<div class="form-group">
+		      		<label for="Name" class="col-sm-4 control-label">Name</label>
+		      		<div class="col-sm-8">
+			      		<input type="text" class="form-control" name="name" id="Name" placeholder="Name">
+			      	</div>
+			      </div>
+	      		<div class="form-group">
+		      		<label for="inputEmail" class="col-sm-4 control-label">Email</label>
+		      		<div class="col-sm-8">
+			      		<input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email">
+			      	</div>
+			      </div>
+			      <div class="form-group">
+		      		<label for="Password" class="col-sm-4 control-label">Password</label>
+		      		<div class="col-sm-8">
+			      		<input type="password" class="form-control" name="password" id="Password" placeholder="Password">
+			      	</div>
+			      </div>
+			      <div class="form-group">
+		      		<label for="Re-Password" class="col-sm-4 control-label">Re-Password</label>
+		      		<div class="col-sm-8">
+			      		<input type="password" class="form-control" id="Re-Password" placeholder="Password">
+			      	</div>
+			      </div>
+			      <div class="form-group">
+		      		<label for="ID" class="col-sm-4 control-label">Student&nbsp;ID</label>
+		      		<div class="col-sm-8">
+			      		<input type="text" class="form-control" name="id" id="ID" placeholder="Student ID">
+			      	</div>
+			      </div>
+			      <div class="form-group">
+		      		<label for="major" class="col-sm-4 control-label">Major</label>
+		      		<div class="col-sm-8">
+			      		<input type="text" class="form-control" name="major" id="major" placeholder="Major">
+			      	</div>
+			      </div>
+			      <div class="form-group">
+				      <div class="col-sm-offset-2 col-sm-10">
+					      <button type="submit" class="btn btn-default">Register</button>
+					  </div>
+				</div>
+	      	</form>
+	      </div>
+      	</center>
+      	<br />
+      	<br />
+      </div>
       <hr>
 
       <footer>
