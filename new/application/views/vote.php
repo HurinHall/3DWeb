@@ -47,16 +47,7 @@
             <li><a href="<?=base_url('/contact');?>">Contact</a></li>
            </ul>
          
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-            <a class="btn btn-success" href="<?=base_url('/register');?>">Register</a>
-          </form>
+          <?=$login;?>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
@@ -205,7 +196,7 @@
         var camera = new THREE.PerspectiveCamera(40, 500 / 400, 1, 1000);
         // create a render and set the size
         var webGLRenderer = new THREE.WebGLRenderer();
-        webGLRenderer.setClearColorHex(0x000, 1.0);
+        webGLRenderer.setClearColorHex(0xcccccc, 1.0);
         webGLRenderer.setSize(500, 400);
         webGLRenderer.shadowMapEnabled = true;
         // position and point the camera to the center of the scene
