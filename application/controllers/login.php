@@ -14,15 +14,23 @@ class Login extends CI_Controller {
 		if($_POST['email']&&$_POST['password']){
 			$email=$_POST['email'];
 			$password=$_POST['password'];
-			$query = $this->db->query("SELECT name FROM user WHERE email = '".$email."' AND pwd = PASSWORD('".$password."')");
+			$query = $this->db->query("SELECT * FROM user WHERE email = '".$email."' AND pwd = PASSWORD('".$password."')");
 			if($query->num_rows()==0){
 				echo "<script>alert('Login Failed !');window.location='".$_POST['url']."';</script>";
 			}else{
-				$name="";
+				/*$name="";
+				
+				$id="";
 				foreach($query->result() as $item){
 					$name=$item->name;
-			}
+					$id = $item->id;
+			}*/
+
+				$udata= $query->row_array();
+				
+				$name = $udata['name'];
 				$this->session->set_userdata('name',$name);
+				$this->session->set_userdata($udata);
 				redirect($_POST['url'],'reload');
 			}
 		}else{

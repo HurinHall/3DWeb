@@ -11,13 +11,13 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		if($this->session->userdata('name')){
-			$data['login']="<ul class=\"nav navbar-nav navbar-right\">
+      $data['login']="<ul class=\"nav navbar-nav navbar-right\">
         <li class=\"text-danger\"><a>Welcome ".$this->session->userdata('name')."</a></li>
         <li class=\"dropdown\">
           <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"> <span class=\"caret\"></span></a>
           <ul class=\"dropdown-menu\" role=\"menu\">
-            <li><a href=\"".base_url('/changepwd')."\">Change Password</a></li>
-            <li><a href=\"".base_url('/login/logout?url='.base_url('/'))."\">Logout</a></li>
+            <li><a href=\"".base_url('/manage')."\">Dashboard</a></li>
+            <li><a href=\"".base_url('/login/logout?url='.base_url())."\">Logout</a></li>
           </ul>
         </li>
       </ul>";

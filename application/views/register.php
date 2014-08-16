@@ -142,7 +142,8 @@
                 	data: { name: $('input#Name').val()},
                 	success: function(data){
                 		if(data==1){	  
-                			alert("This name has been registered !");    
+                			alert("This name has been registered !");  
+                      $('input#Name').val('');  
                 			$('input#Name').focus();          		
 	                		error=1;
                 		}else{
@@ -162,6 +163,7 @@
                 	success: function(data){
                 		if(data==1){
 	                		alert("This email has been registered !");
+                      $('input#inputEmail').val('');
 	                		$('input#inputEmail').focus();
 	                		error1=1;
                 		}else{
@@ -200,7 +202,9 @@
                 	data: { id: $('input#ID').val()},
                 	success: function(data){
                 		if(data==1){	  
-                			alert("This student ID has been registered !");    
+                			alert("This student ID has been registered !");   
+                       $('input#ID').val(''); 
+
                 			$('input#ID').focus();          		
 	                		error2=1;
                 		}else{
