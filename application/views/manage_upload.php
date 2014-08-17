@@ -3,6 +3,7 @@
     
     <head>
         <title>Uplaod 3D Model</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <!-- Bootstrap -->
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
