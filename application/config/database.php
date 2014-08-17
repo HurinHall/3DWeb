@@ -47,17 +47,31 @@
 
 $active_group = 'default';
 $active_record = TRUE;
-
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'root';
 $db['default']['database'] = '3dweb';
+
+//-------------------------------------------
+//-------------------------------------------
+// FOR SAE
+
+
+/*
+$db['default']['hostname'] = SAE_MYSQL_HOST_M;//主库
+$db['default']['hostname_s'] = SAE_MYSQL_HOST_S;//从库 
+$db['default']['username'] = SAE_MYSQL_USER;
+$db['default']['password'] = SAE_MYSQL_PASS;
+$db['default']['database'] = SAE_MYSQL_DB;
+$db['default']['port'] = SAE_MYSQL_PORT;
+
+*/
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
+$db['default']['pconnect'] = FALSE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = '';
+$db['default']['cachedir'] = ''; //SAE数据库缓存, 使用kvdb进行缓存. 此配置值为key前缀, 例如 "dbcache_". 若不设置, 则不缓存
 $db['default']['char_set'] = 'utf8';
 $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';

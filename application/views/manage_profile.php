@@ -2,7 +2,7 @@
 <html>
     
     <head>
-        <title>Forms</title>
+        <title>User Profile</title>
         <!-- Bootstrap -->
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -154,8 +154,7 @@
                 <div class="span9" id="content">
                      
                     
-                    <?php $userdata=$this->session->all_userdata();
-                    ?>
+                
 
                      <!-- validation -->
                     <div class="row-fluid">
@@ -180,13 +179,13 @@
                             <div class="control-group">
                                 <label class="control-label">Name<span class="required">*</span></label>
                                 <div class="controls">
-                                    <input type="text" name="name" data-required="1" class="span6 m-wrap" value="<?=$userdata['name']?>" disabled/>
+                                    <input type="text" name="name" data-required="1" class="span6 m-wrap" value="<?=$result->name?>" disabled/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Email<span class="required">*</span></label>
                                 <div class="controls">
-                                    <input name="email" type="email" class="span6 m-wrap" value="<?=$userdata['email']?>" disabled/>
+                                    <input name="email" type="email" class="span6 m-wrap" value="<?=$result->email?>" disabled/>
                                 </div>
                             </div>
                             
@@ -212,20 +211,20 @@
                             <div class="control-group">
                                 <label class="control-label">Student ID<span class="required">*</span></label>
                                 <div class="controls">
-                                    <input type="text" name="studentid" data-required="1" class="span6 m-wrap" value="<?=$userdata['studentid']?>" disabled/>
+                                    <input type="text" name="studentid" data-required="1" class="span6 m-wrap" value="<?=$result->studentid?>" disabled/>
                                 </div>
                             </div>
                             
                             <div class="control-group">
                                 <label class="control-label">Major<span class="required">*</span></label>
                                 <div class="controls">
-                                    <input type="text" name="major" data-required="1" class="span6 m-wrap" value="<?=$userdata['major']?>" disabled/>
+                                    <input type="text" name="major" data-required="1" class="span6 m-wrap" value="<?=$result->email?>" disabled/>
                                 </div>
                             </div>
 
                             <div class="control-group">
                                 <div class="controls">
-                                    <input type="hidden" name="uid" data-required="1" class="span6 m-wrap" value="<?=$userdata['id']?>" />
+                                    <input type="hidden" name="uid" data-required="1" class="span6 m-wrap" value="<?=$result->id?>" />
                                 </div>
                             </div>
 
@@ -295,7 +294,13 @@
                                 error2=1;
                                 alert("Please check old password again !");
                                 $('input#Oldpassword').val('');
-                                $('input#Oldpassword').focus();
+                                $('input#Oldpassword').css(
+                                  {
+                                    "border-color": "#a94442",
+                                    "-webkit-box-shadow": "inset 0 1px 1px rgba(0,0,0,.075)",
+                                    "box-shadow": "inset 0 1px 1px rgba(0,0,0,.075)"
+                                  }
+                                );
                             }
                         }
               });
@@ -304,6 +309,7 @@
 
      function checkpw(){
           if($('input#Password').val().length<6){
+            alert("Please check the length of  password less than 6 characters !");
              $('input#Password').css(
               {
                 "border-color": "#a94442",
@@ -311,7 +317,6 @@
                 "box-shadow": "inset 0 1px 1px rgba(0,0,0,.075)"
               }
             );
-              $('input#Password').focus();
           }else{
              $('input#Password').css(
               {
@@ -324,6 +329,8 @@
     }
     function checkrpw(){
           if($('input#Password').val()!=$('input#Re-Password').val()){
+            alert("Please check confirm password !");
+
               $('input#Re-Password').css(
               {
                 "border-color": "#a94442",
@@ -331,7 +338,6 @@
                 "box-shadow": "inset 0 1px 1px rgba(0,0,0,.075)"
               }
             );
-              $('input#Re-Password').focus();
           }else{
              $('input#Password').css(
               {

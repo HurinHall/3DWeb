@@ -18,19 +18,16 @@ class Login extends CI_Controller {
 			if($query->num_rows()==0){
 				echo "<script>alert('Login Failed !');window.location='".$_POST['url']."';</script>";
 			}else{
-				/*$name="";
-				
-				$id="";
+				$name="";
+				$id=0;
 				foreach($query->result() as $item){
 					$name=$item->name;
 					$id = $item->id;
-			}*/
 
-				$udata= $query->row_array();
-				
-				$name = $udata['name'];
+			}
+
 				$this->session->set_userdata('name',$name);
-				$this->session->set_userdata($udata);
+				$this->session->set_userdata('userid',$id);
 				redirect($_POST['url'],'reload');
 			}
 		}else{
@@ -39,7 +36,7 @@ class Login extends CI_Controller {
 	}
 	
 	public function logout(){
-		$this->session->unset_userdata('name');
+		$this->session->sess_destroy();
 		redirect($_GET['url'],'reload');
 	}
 }

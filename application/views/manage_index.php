@@ -2,7 +2,7 @@
 <html class="no-js">
     
     <head>
-        <title>Admin Home Page</title>
+        <title>Dashboard</title>
         <!-- Bootstrap -->
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -230,12 +230,7 @@
         <script src="<?=base_url()?>dashboard/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?=base_url()?>dashboard/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
         <script src="<?=base_url()?>dashboard/assets/scripts.js"></script>
-        <script>
-        $(function() {
-            // Easy pie charts
-            $('.chart').easyPieChart({animate: 1000});
-        });
-        </script>
+      
     </body>
 
 </html>
