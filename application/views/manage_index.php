@@ -127,6 +127,7 @@
                 </div>
             </div>
         </div>
+
         <div class="container-fluid">
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
@@ -137,9 +138,7 @@
                         <li>
                             <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> Dashboard</a>
                         </li>
-                        <li>
-                            <a href="<?=base_url('manage/work')?>"><i class="icon-chevron-right"></i> My 3D Work</a>
-                        </li>
+
                         <li>
                             <a href="<?=base_url('manage/upload')?>"><i class="icon-chevron-right"></i> Upload</a>
                         </li>
@@ -183,54 +182,209 @@
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Gallery</div>
-                                <div class="pull-right"><span class="badge badge-info">1,462</span>
+                                <div class="muted pull-left">My Work</div>
 
                                 </div>
-                            </div>
-                            <div class="block-content collapse in">
-                                <div class="row-fluid padd-bottom">
-                                  <div class="span3">
-                                      <a href="#" class="thumbnail">
-                                        <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4.jpg">
-                                      </a>
-                                  </div>
-                                  <div class="span3">
-                                      <a href="#" class="thumbnail">
-                                        <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4.jpg">
-                                      </a>
-                                  </div>
-                                  <div class="span3">
-                                      <a href="#" class="thumbnail">
-                                        <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4.jpg">
-                                      </a>
-                                  </div>
-                                  <div class="span3">
-                                      <a href="#" class="thumbnail">
-                                        <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4.jpg">
-                                      </a>
-                                  </div>
+                        </div>
+
+
+                        
+                        <div class="block-content collapse in">
+                            <!-- here to load the data -->
+                            <?php 
+                                $num =count($result);
+                                $i = 0;
+                                $imagepath = '';
+                                foreach ($result as $row)
+                                {   
+                                    $imagepath =base_url().'/models/'.$this->session->userdata('name').'/'.$row->imagename;
+                                    $obj = '/models/'.$this->session->userdata('name').'/'.$row->publisher.'_'.$row->createtime.'/'.$row->publisher.'_'.$row->createtime.'.obj';
+                                    //var_dump($obj);
+                                    if( $i%4 == 0){
+                                        echo " <div class=\"row-fluid padd-bottom\">
+                                                  <div class=\"span3\">
+                                                      <div class=\"thumbnail\">
+                                                        <img data-src=\"holder.js/230x320\"  src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
+                                                        <div class=\"caption\">
+                                                          <h3>Thumbnail label</h3>
+                                                          <p>...</p>
+                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"getobj('".$obj ."') \">View</a></p>
+                                                        </div>
+                                                      </div>
+                                                  </div>";
+                                    }elseif(($i+1)%4 == 0){
+                                        echo "  
+                                                  <div class=\"span3\">
+                                                      <div class=\"thumbnail\">
+                                                        <img data-src=\"holder.js/230x320\"  src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
+                                                        <div class=\"caption\">
+                                                          <h3>Thumbnail label</h3>
+                                                          <p>...</p>
+                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"getobj('".$obj ."') \">View</a></p>
+                                                        </div>
+                                                      </div>
+                                                  </div>
+                                                </div>";
+                                    }else{
+                                        echo "  
+                                                  <div class=\"span3\">
+                                                      <div class=\"thumbnail\">
+                                                        <img data-src=\"holder.js/230x320\"  src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
+                                                        <div class=\"caption\">
+                                                          <h3>Thumbnail label</h3>
+                                                          <p>...</p>
+                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"getobj('".$obj ."') \">View</a></p>
+                                                        </div>
+                                                      </div>
+                                                  </div>";
+                                    }
+
+                                    $i++;
+                                  
+                                }
+                            ?>                            
+
+
+
+
+
+                                <!-- <div class="row-fluid padd-bottom">
+                                      <div class="span3">
+                                          <div class="thumbnail">
+                                            <img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
+                                            <div class="caption">
+                                                <h3>Thumbnail label</h3>
+                                                <p>...</p>
+                                                <p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+                                            </div>
+                                         </div>
+                                      </div>                          <div class="span3">
+                                          <div class="thumbnail">
+                                            <img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
+                                            <div class="caption">
+                                                <h3>Thumbnail label</h3>
+                                                <p>...</p>
+                                                <p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+                                            </div>
+                                         </div>
+                                      </div>                          <div class="span3">
+                                          <div class="thumbnail">
+                                            <img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
+                                            <div class="caption">
+                                                <h3>Thumbnail label</h3>
+                                                <p>...</p>
+                                                <p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+                                            </div>
+                                         </div>
+                                      </div> -->
+
+                                      <!-- <div class="span3">
+                                          <a href="#" class="thumbnail">
+                                            <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4.jpg">
+                                          </a>
+                                      </div>
+                                      <div class="span3">
+                                          <a href="#" class="thumbnail">
+                                            <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4.jpg">
+                                          </a>
+                                      </div>
+                                      <div class="span3">
+                                          <a href="#" class="thumbnail">
+                                            <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4.jpg">
+                                          </a>
+                                      </div> -->
                                 </div>
 
                               
-                                </div>
-                            </div>
                         </div>
-                        <!-- /block -->
                     </div>
+                        
+                        <!-- /block -->
                 </div>
             </div>
+        </div>
+   
             <hr>
             <footer>
                 <p>Copyright &copy; 3D Website</p>
             </footer>
         </div>
+
+
+        <!-- show 3D design -->
+        <div class="modal fade" id="view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close">&times;</button>
+              <h2 class="modal-title">Title</h2>
+            </div>
+            <div class="modal-body">
+              <center>
+                <div style="width:520px; margin:auto; position:relative; font-size: 9pt; color: #777777;">
+                    <canvas id="cv" style="border: 1px solid;" width="500" height="400" ></canvas>
+                </div>
+              </center>
+            </div>  
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+
+
         <!--/.fluid-container-->
         <script src="<?=base_url()?>dashboard/vendors/jquery-1.9.1.min.js"></script>
         <script src="<?=base_url()?>dashboard/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?=base_url()?>dashboard/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
         <script src="<?=base_url()?>dashboard/assets/scripts.js"></script>
-      
+        <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.js');?>"></script>
+        <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.webgl.js');?>"></script>
+        <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.touch.js');?>"></script>
+        <script type="text/javascript">
+
+        function getobj(obj){
+            var thisobj = obj;
+            var canvas = document.getElementById('cv');
+
+            var viewer = new JSC3D.Viewer(canvas);
+          
+            viewer.setParameter('SceneUrl', "<?=base_url('"+obj+"');?>");
+            viewer.setParameter('InitRotationX', -90);
+            viewer.setParameter('InitRotationY', -90);
+            viewer.setParameter('InitRotationZ', 0);
+            viewer.setParameter('ModelColor', '#CAA618');
+            viewer.setParameter('BackgroundColor1', '#FFFFFF');
+            viewer.setParameter('BackgroundColor2', '#383840');
+            viewer.setParameter('RenderMode', 'smooth');
+            viewer.setParameter('MipMapping', 'on');
+            viewer.setParameter('Renderer', 'webgl');
+            viewer.init();
+            viewer.update();
+           
+
+        }
+
+
+            // once everything is loaded, we run our Three.js stuff.
+         /*   var canvas = document.getElementById('cv');
+            var viewer = new JSC3D.Viewer(canvas);
+           // viewer.setParameter('SceneUrl', "<?=base_url('models/demo/20140817120510/hotel1.obj');?>");
+            viewer.setParameter('SceneUrl', "<?=base_url('models/demo/20140817120510/hotel1.obj');?>");
+            viewer.setParameter('InitRotationX', -90);
+            viewer.setParameter('InitRotationY', -90);
+            viewer.setParameter('InitRotationZ', 0);
+            viewer.setParameter('ModelColor', '#CAA618');
+            viewer.setParameter('BackgroundColor1', '#FFFFFF');
+            viewer.setParameter('BackgroundColor2', '#383840');
+            viewer.setParameter('RenderMode', 'textureflat');
+            viewer.setParameter('MipMapping', 'on');
+            viewer.setParameter('Renderer', 'webgl');
+            viewer.init();
+            viewer.update();*/
+
+
+    </script>
     </body>
 
 </html>

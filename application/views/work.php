@@ -190,7 +190,7 @@
     // once everything is loaded, we run our Three.js stuff.
     var canvas = document.getElementById('cv');
     var viewer = new JSC3D.Viewer(canvas);
-    viewer.setParameter('SceneUrl', "<?=base_url('/hotel/hotel.obj');?>");
+    viewer.setParameter('SceneUrl', "<?=base_url('models/demo/20140817120510/hotel1.obj');?>");
     viewer.setParameter('InitRotationX', -90);
     viewer.setParameter('InitRotationY', -90);
     viewer.setParameter('InitRotationZ', 0);

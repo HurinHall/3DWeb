@@ -23,12 +23,17 @@ class Manage extends CI_Controller {
             </ul>
           </li>
           </ul>";
+      $sql = "SELECT * FROM work WHERE publisher = '".$this->session->userdata('name')."'";
+      $query = $this->db->query($sql);
+      $data['result'] = $query->result();
+    
+
       $this->load->view('manage_index',$data);
     }else{
       echo "<script>alert('Please Login first!');window.location='".base_url()."';</script>";
     }
 
-  		$this->load->view('manage_index');
+  	
 	}
 
 
@@ -103,33 +108,121 @@ class Manage extends CI_Controller {
           </li>
           </ul>";
       $this->load->view('manage_upload',$data);
-    }else{
-      echo "<script>alert('Please Login first!');window.location='".base_url()."';</script>";
-    }
+        }else{
+          echo "<script>alert('Please Login first!');window.location='".base_url()."';</script>";
+        }
   }
 
-  public function do_upload(){  
+  public function uploadfile(){  
 
-    $config['upload_path'] = getcwd().'/models/';
-   // $config['allowed_types'] = 'obj|gif|jpg|png';
-    $config['file_name'] = $this->session->userdata('name').'_'.date('Y_m_d_h_m_s', time());
-    $config['max_size'] = '50000';
-    //$config['max_width']  = '1024';
-    //$config['max_height']  = '768';
+    $error1 = 0;
+    $error2 = 0;
+
+    if($_POST){
+
+      $title=$_POST['title'];
+      $category=$_POST['category'];
+      $description=$_POST['description'];
+      $creattime=$_POST['date'];
+      $publisher = $this->session->userdata('name');
+      $filename = $publisher.'_'. $creattime;
+      //$imagename = $filename.'jpg';
+      
+      //var_dump($zipfile);
+
+      //
+
+    $path = getcwd().'/models/'.$this->session->userdata('name').'/';
+    $zipfile = $path.$filename.'.zip';
+    $destinantion = $path.$filename.'/'; 
+
+    if (!file_exists($path)) {
+      mkdir($path,0777);
+    }
+   
+    $config['upload_path'] = $path;
+    $config['allowed_types'] = 'jpg|zip';
+    $config['file_name'] = $filename;
+    $config['max_size'] = '5000';
+    $config['max_width']  = '1024';
+    $config['max_height']  = '768';
     
     $this->load->library('upload', $config);
     
     if ( !$this->upload->do_upload('imagefile'))
       {
-          $error = array('error' => $this->upload->display_errors());
+          //echo "Imange Cover Upload Failed";
+          $error1=1;
       } 
     else
       {
-          $data = array('upload_data' => $this->upload->data('imagefile'));
+          //echo "Imange Cover Upload Successfully";
+          $error1=0;
+      }
+
+    if ( !$this->upload->do_upload('threedfile'))
+      {
+         //echo "3D File Upload Failed";
+          $error2=1;
+      } 
+    else
+      {
+         //unzip the 3d zip file
+         $this->unzip_file($zipfile,$destinantion);
+        // rename the obj file
+         $this->objfilerename($destinantion,$filename);
+
+          $error2=0;
+      }
+
+      if($error1==0 && $error2==0){
+          $query=$this->db->query("INSERT INTO work (id, title, createtime, category, imagename, threedfilename,description,publisher,voted,competition) VALUES (null, '$title', '$creattime','$category','$filename.jpg', '$filename.obj','$description','$publisher',0,0)");
+          if(!$query){
+            echo "<script>alert('Insert Failed !');window.location='".base_url('/manage/upload')."';</script>";
+          }else{
+
+            echo "<script>alert('Insert Successfully !');window.location='".base_url('/manage/upload')."';</script>";
+            
+          }
+      }else{
+            echo "<script>alert('Upload Failed !');window.location='".base_url('/manage/upload')."';</script>";
+      }
+         
     }
 
   }      
 
+
+  public function unzip_file($zipfile,$destinantion){
+      $zip = new ZipArchive() ;
+      //打开压缩文件
+      if ($zip->open($zipfile) !== TRUE) {
+          die ('Could not open archive');
+          }
+      //创建文件
+      $zip->extractTo($destinantion);
+      $zip->close();
+      
+  }
+
+  public function objfilerename($destinantion,$filename){
+    $dir= $destinantion;
+    $filenames = scandir($destinantion);
+    foreach ($filenames as $name) {
+    
+      $path_parts = pathinfo($name);
+      if($path_parts['extension'] == 'obj'){
+         //echo $name.'<br>';
+         rename($destinantion.$name,$destinantion.$filename.'.obj');
+         break;
+      }
+
+}
+
+  }
+
+
+  
 
 
 

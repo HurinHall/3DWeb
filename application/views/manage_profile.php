@@ -248,7 +248,7 @@
             </div>
             <hr>
             <footer>
-                <p>&copy; Vincent Gabriel 2013</p>
+                <p>Copyright &copy; 3D Website</p>
             </footer>
         </div>
         <!--/.fluid-container-->
