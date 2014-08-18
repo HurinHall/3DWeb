@@ -206,9 +206,9 @@
                                                       <div class=\"thumbnail\">
                                                         <img data-src=\"holder.js/230x320\"  src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
                                                         <div class=\"caption\">
-                                                          <h3>Thumbnail label</h3>
-                                                          <p>...</p>
-                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"getobj('".$obj ."') \">View</a></p>
+                                                          <h3>".$row->title."</h3>
+                                                          <p>".$row->description."</p>
+                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a></p>
                                                         </div>
                                                       </div>
                                                   </div>";
@@ -218,9 +218,9 @@
                                                       <div class=\"thumbnail\">
                                                         <img data-src=\"holder.js/230x320\"  src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
                                                         <div class=\"caption\">
-                                                          <h3>Thumbnail label</h3>
-                                                          <p>...</p>
-                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"getobj('".$obj ."') \">View</a></p>
+                                                          <h3>".$row->title."</h3>
+                                                          <p>".$row->description."</p>
+                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a></p>
                                                         </div>
                                                       </div>
                                                   </div>
@@ -231,9 +231,9 @@
                                                       <div class=\"thumbnail\">
                                                         <img data-src=\"holder.js/230x320\"  src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
                                                         <div class=\"caption\">
-                                                          <h3>Thumbnail label</h3>
-                                                          <p>...</p>
-                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"getobj('".$obj ."') \">View</a></p>
+                                                          <h3>".$row->title."</h3>
+                                                          <p>".$row->description."</p>
+                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a></p>
                                                         </div>
                                                       </div>
                                                   </div>";
@@ -246,53 +246,6 @@
 
 
 
-
-
-                                <!-- <div class="row-fluid padd-bottom">
-                                      <div class="span3">
-                                          <div class="thumbnail">
-                                            <img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-                                            <div class="caption">
-                                                <h3>Thumbnail label</h3>
-                                                <p>...</p>
-                                                <p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
-                                            </div>
-                                         </div>
-                                      </div>                          <div class="span3">
-                                          <div class="thumbnail">
-                                            <img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-                                            <div class="caption">
-                                                <h3>Thumbnail label</h3>
-                                                <p>...</p>
-                                                <p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
-                                            </div>
-                                         </div>
-                                      </div>                          <div class="span3">
-                                          <div class="thumbnail">
-                                            <img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-                                            <div class="caption">
-                                                <h3>Thumbnail label</h3>
-                                                <p>...</p>
-                                                <p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
-                                            </div>
-                                         </div>
-                                      </div> -->
-
-                                      <!-- <div class="span3">
-                                          <a href="#" class="thumbnail">
-                                            <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4.jpg">
-                                          </a>
-                                      </div>
-                                      <div class="span3">
-                                          <a href="#" class="thumbnail">
-                                            <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4.jpg">
-                                          </a>
-                                      </div>
-                                      <div class="span3">
-                                          <a href="#" class="thumbnail">
-                                            <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi4.jpg">
-                                          </a>
-                                      </div> -->
                                 </div>
 
                               
@@ -317,12 +270,12 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close">&times;</button>
-              <h2 class="modal-title">Title</h2>
+              <h2 class="modal-title">3D Model</h2>
             </div>
             <div class="modal-body">
               <center>
                 <div style="width:520px; margin:auto; position:relative; font-size: 9pt; color: #777777;">
-                    <canvas id="cv" style="border: 1px solid;" width="500" height="400" ></canvas>
+                    <canvas id="cv" style="border: 1px solid;" width="520" height="400" ></canvas>
                 </div>
               </center>
             </div>  
@@ -343,46 +296,28 @@
         <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.touch.js');?>"></script>
         <script type="text/javascript">
 
-        function getobj(obj){
-            var thisobj = obj;
             var canvas = document.getElementById('cv');
 
             var viewer = new JSC3D.Viewer(canvas);
           
-            viewer.setParameter('SceneUrl', "<?=base_url('"+obj+"');?>");
+            viewer.setParameter('SceneUrl', '');
             viewer.setParameter('InitRotationX', -90);
             viewer.setParameter('InitRotationY', -90);
             viewer.setParameter('InitRotationZ', 0);
             viewer.setParameter('ModelColor', '#CAA618');
             viewer.setParameter('BackgroundColor1', '#FFFFFF');
             viewer.setParameter('BackgroundColor2', '#383840');
-            viewer.setParameter('RenderMode', 'smooth');
+            viewer.setParameter('RenderMode', 'texturesmooth');
             viewer.setParameter('MipMapping', 'on');
             viewer.setParameter('Renderer', 'webgl');
             viewer.init();
             viewer.update();
-           
 
-        }
-
-
-            // once everything is loaded, we run our Three.js stuff.
-         /*   var canvas = document.getElementById('cv');
-            var viewer = new JSC3D.Viewer(canvas);
-           // viewer.setParameter('SceneUrl', "<?=base_url('models/demo/20140817120510/hotel1.obj');?>");
-            viewer.setParameter('SceneUrl', "<?=base_url('models/demo/20140817120510/hotel1.obj');?>");
-            viewer.setParameter('InitRotationX', -90);
-            viewer.setParameter('InitRotationY', -90);
-            viewer.setParameter('InitRotationZ', 0);
-            viewer.setParameter('ModelColor', '#CAA618');
-            viewer.setParameter('BackgroundColor1', '#FFFFFF');
-            viewer.setParameter('BackgroundColor2', '#383840');
-            viewer.setParameter('RenderMode', 'textureflat');
-            viewer.setParameter('MipMapping', 'on');
-            viewer.setParameter('Renderer', 'webgl');
-            viewer.init();
-            viewer.update();*/
-
+            function loadModel(obj) {
+                var objfile = "<?=base_url('"+obj+"');?>"
+                viewer.replaceSceneFromUrl(objfile);
+                viewer.update();
+            }
 
     </script>
     </body>

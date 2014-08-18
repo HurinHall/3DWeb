@@ -136,9 +136,7 @@
                         <li>
                             <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> Dashboard</a>
                         </li>
-                        <li>
-                            <a href="<?=base_url('manage/work')?>"><i class="icon-chevron-right"></i> My 3D Work</a>
-                        </li>
+                       
                         <li>
                             <a href="<?=base_url('manage/upload')?>"><i class="icon-chevron-right"></i> Upload</a>
                         </li>
@@ -218,7 +216,7 @@
                             <div class="control-group">
                                 <label class="control-label">Major<span class="required">*</span></label>
                                 <div class="controls">
-                                    <input type="text" name="major" data-required="1" class="span6 m-wrap" value="<?=$result->email?>" disabled/>
+                                    <input type="text" name="major" data-required="1" class="span6 m-wrap" value="<?=$result->major?>" disabled/>
                                 </div>
                             </div>
 

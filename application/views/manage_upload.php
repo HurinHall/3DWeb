@@ -121,9 +121,7 @@
                         <li>
                             <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> Dashboard</a>
                         </li>
-                        <li>
-                            <a href="<?=base_url('manage/work')?>"><i class="icon-chevron-right"></i> My 3D Work</a>
-                        </li>
+                        
                         <li>
                             <a href="<?=base_url('manage/upload')?>"><i class="icon-chevron-right"></i> Upload</a>
                         </li>
