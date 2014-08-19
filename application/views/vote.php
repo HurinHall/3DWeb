@@ -60,7 +60,39 @@
 	</div>
 	  
 	<div class="row">
-		<div class="col-sm-6 col-md-3">
+        <?php 
+            $imagepath = '';
+            foreach ($result as $row)
+            {   
+                $imagepath =base_url().'/models/'.$row->publisher.'/'.$row->imagename;
+                $obj = '/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'/'.$row->publisher.'_'.$row->createtime.'.obj';
+               // $downloadlink = base_url().'/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'.zip';
+
+                echo "
+                    <div class=\"col-sm-6 col-md-3\">
+                        <div class=\"thumbnail\">
+                            <img src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
+                            <div class=\"caption\">
+                              <h3>Title:".$row->title."</h3>
+                              <h4>Publisher:".$row->publisher."</h4>
+                              <h5>Description:".$row->description."</h5>
+                              <p class=\"text-danger\">Vote: 100</p>
+                              <p>
+                                <a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a>
+                                <a class=\"btn btn-success\" role=\"button\">Vote</a>
+                              </p>
+                            </div>
+                        </div>
+                    </div>  
+                ";
+
+            }
+
+        ?>
+          <!-- <a data-toggle=\"modal\" href=\"".$downloadlink."\" class=\"btn btn-primary\" role=\"button\" >Download</a> -->
+
+ 
+<!-- 		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
 				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
 				<div class="caption">
@@ -69,77 +101,8 @@
 					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
 				</div>
 			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p class="text-danger">Vote: 100</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p class="text-danger">Vote: 100</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p class="text-danger">Vote: 100</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p class="text-danger">Vote: 100</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p class="text-danger">Vote: 100</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p class="text-danger">Vote: 100</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p class="text-danger">Vote: 100</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
-				</div>
-			</div>
-		</div>
+		</div>  -->
+		
 	</div>
 	
 	<div class="row">
@@ -169,8 +132,9 @@
         </div>
         <div class="modal-body">
           <center>
-	      <div id="WebGL-output">
-          </div>
+            <div style="width:520px; margin:auto; position:relative; font-size: 9pt; color: #777777;">
+                <canvas id="cv" style="border: 1px solid;" width="500" height="400" ></canvas>
+            </div>
           </center>
         </div>  
       </div><!-- /.modal-content -->
@@ -186,72 +150,36 @@
     <script type="text/javascript" src="<?=base_url('/js/libs/stats.js');?>"></script>
     <script type="text/javascript" src="<?=base_url('/js/libs/dat.gui.js');?>"></script>
     <script type="text/javascript" src="<?=base_url('/js/libs/OrbitControls.js');?>"></script>
+
+    <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.js');?>"></script>
+    <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.webgl.js');?>"></script>
+    <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.touch.js');?>"></script>
+
     <script type="text/javascript">
     // once everything is loaded, we run our Three.js stuff.
-    $(function () {
-        var stats = initStats();
-        // create a scene, that will hold all our elements such as objects, cameras and lights.
-        var scene = new THREE.Scene();
-        // create a camera, which defines where we're looking at.
-        var camera = new THREE.PerspectiveCamera(40, 500 / 400, 1, 1000);
-        // create a render and set the size
-        var webGLRenderer = new THREE.WebGLRenderer();
-        webGLRenderer.setClearColorHex(0xcccccc, 1.0);
-        webGLRenderer.setSize(500, 400);
-        webGLRenderer.shadowMapEnabled = true;
-        // position and point the camera to the center of the scene
-        camera.position.x = 180;
-        camera.position.y = 200;
-        camera.position.z = 150;
-        camera.lookAt(new THREE.Vector3(0, 40, 0));
-        var orbitControls = new THREE.OrbitControls(camera);
-        orbitControls.autoRotate = true;
-        var clock = new THREE.Clock();
-        // add spotlight for the shadows
-        var spotLight = new THREE.SpotLight(0xffffff);
-        spotLight.position.set(180, 200, 150);
-        scene.add(spotLight);
-        // add the output of the renderer to the html element
-        $("#WebGL-output").append(webGLRenderer.domElement);
-        // call the render function
-        var step = 0;
-        var group;
-        var gui = new dat.GUI();
-        // model from http://www.thingiverse.com/thing:69709
-        var loader = new THREE.STLLoader();
-        var group = new THREE.Object3D();
-        loader.load("<?=base_url('/models/SolidHead.stl');?>", function (geometry) {
-            // console.log(geometry);
-            var mat = new THREE.MeshLambertMaterial({color: 0x7777ff});
-            group = new THREE.Mesh(geometry, mat);
-            group.rotation.x = -0.5 * Math.PI;
-            group.scale.set(0.6, 0.6, 0.6);
-            scene.add(group);
-        });
-        render();
-        function render() {
-            stats.update();
-            var delta = clock.getDelta();
-            orbitControls.update(delta);
-            if (group) {
-                group.rotation.z += 0.006;
-                // group.rotation.x+=0.006;
-            }
-            // render using requestAnimationFrame
-            requestAnimationFrame(render);
-            webGLRenderer.render(scene, camera);
+
+        var canvas = document.getElementById('cv');
+
+        var viewer = new JSC3D.Viewer(canvas);
+      
+        viewer.setParameter('SceneUrl', '');
+        viewer.setParameter('InitRotationX', -90);
+        viewer.setParameter('InitRotationY', -90);
+        viewer.setParameter('InitRotationZ', 0);
+        viewer.setParameter('ModelColor', '#CAA618');
+        viewer.setParameter('BackgroundColor1', '#FFFFFF');
+        viewer.setParameter('BackgroundColor2', '#383840');
+        viewer.setParameter('RenderMode', 'texturesmooth');
+        viewer.setParameter('MipMapping', 'on');
+        viewer.setParameter('Renderer', 'webgl');
+        viewer.init();
+        viewer.update();
+
+        function loadModel(obj) {
+            var objfile = "<?=base_url('"+obj+"');?>"
+            viewer.replaceSceneFromUrl(objfile);
+            viewer.update();
         }
-        function initStats() {
-            var stats = new Stats();
-            stats.setMode(0); // 0: fps, 1: ms
-            // Align top-left
-            stats.domElement.style.position = 'absolute';
-            stats.domElement.style.left = '0px';
-            stats.domElement.style.top = '0px';
-            $("#Stats-output").append(stats.domElement);
-            return stats;
-        }
-    });
     </script>
 </body>
 </html>

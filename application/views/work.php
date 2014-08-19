@@ -60,87 +60,48 @@
 	</div>
 	  
 	<div class="row">
-		<div class="col-sm-6 col-md-3">
+		<?php 
+        	$imagepath = '';
+        	foreach ($result as $row)
+            {   
+                $imagepath =base_url().'/models/'.$row->publisher.'/'.$row->imagename;
+                $obj = '/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'/'.$row->publisher.'_'.$row->createtime.'.obj';
+                $downloadlink = base_url().'/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'.zip';
+
+                echo "
+                	<div class=\"col-sm-6 col-md-3\">
+						<div class=\"thumbnail\">
+                            <img src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
+                            <div class=\"caption\">
+                              <h3>Title:".$row->title."</h3>
+                              <h4>Publisher:".$row->publisher."</h4>
+                              <h5>Description:".$row->description."</h5>
+                              <p>
+                              	<a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a>
+                                <a data-toggle=\"modal\" href=\"".$downloadlink."\" class=\"btn btn-primary\" role=\"button\" >Download</a>
+
+                              </p>
+                            </div>
+						</div>
+					</div>	
+                ";
+
+            }
+
+		?>
+
+		
+<!-- 		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
 				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
 				<div class="caption">
 					<h3>Thumbnail label</h3>
 					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
+					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">Download</a></p>
 				</div>
 			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
+		</div>-->
+	</div> 
 	
 	<div class="row">
 	<ul class="pagination pull-right">
@@ -188,20 +149,29 @@
 
     <script type="text/javascript">
     // once everything is loaded, we run our Three.js stuff.
-    var canvas = document.getElementById('cv');
-    var viewer = new JSC3D.Viewer(canvas);
-    viewer.setParameter('SceneUrl', "<?=base_url('models/demo/20140817120510/hotel1.obj');?>");
-    viewer.setParameter('InitRotationX', -90);
-    viewer.setParameter('InitRotationY', -90);
-    viewer.setParameter('InitRotationZ', 0);
-    viewer.setParameter('ModelColor', '#CAA618');
-    viewer.setParameter('BackgroundColor1', '#FFFFFF');
-    viewer.setParameter('BackgroundColor2', '#383840');
-    viewer.setParameter('RenderMode', 'textureflat');
-    viewer.setParameter('MipMapping', 'on');
-    viewer.setParameter('Renderer', 'webgl');
-    viewer.init();
-    viewer.update();
+
+        var canvas = document.getElementById('cv');
+
+        var viewer = new JSC3D.Viewer(canvas);
+      
+        viewer.setParameter('SceneUrl', '');
+        viewer.setParameter('InitRotationX', -90);
+        viewer.setParameter('InitRotationY', -90);
+        viewer.setParameter('InitRotationZ', 0);
+        viewer.setParameter('ModelColor', '#CAA618');
+        viewer.setParameter('BackgroundColor1', '#FFFFFF');
+        viewer.setParameter('BackgroundColor2', '#383840');
+        viewer.setParameter('RenderMode', 'texturesmooth');
+        viewer.setParameter('MipMapping', 'on');
+        viewer.setParameter('Renderer', 'webgl');
+        viewer.init();
+        viewer.update();
+
+        function loadModel(obj) {
+            var objfile = "<?=base_url('"+obj+"');?>"
+            viewer.replaceSceneFromUrl(objfile);
+            viewer.update();
+        }
 
 
     </script>

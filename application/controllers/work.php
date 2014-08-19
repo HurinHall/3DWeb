@@ -6,6 +6,8 @@ class Work extends CI_Controller {
     	parent::__construct();
     	$this->load->helper('url');
     	$this->load->library('session');
+      $this->load->database();
+
   	}
 	
 	public function index()
@@ -21,6 +23,7 @@ class Work extends CI_Controller {
           </ul>
         </li>
       </ul>";
+
 		}else{
 			$data['login']="<form class=\"navbar-form navbar-right\" role=\"form\" action=\"".base_url('/login')."\" method=\"post\">
             <div class=\"form-group\">
@@ -33,7 +36,14 @@ class Work extends CI_Controller {
             <button type=\"submit\" class=\"btn btn-success\">Sign in</button>
             <a class=\"btn btn-success\" href=\"".base_url('/register')."\">Register</a>
           </form>";
+      
+    
 		}
+                    //$sql = "SELECT * FROM work WHERE publisher = '".$this->session->userdata('name')."'";
+      $sql = "SELECT * FROM work WHERE  status = 1" ;
+
+      $query = $this->db->query($sql);
+      $data['result'] = $query->result();
 		$this->load->view('work',$data);
 	}
 }

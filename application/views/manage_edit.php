@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html>
     
     <head>
-        <title>Dashboard</title>
+        <title>Uplaod 3D Model</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <!-- Bootstrap -->
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -15,7 +16,6 @@
         <script src="<?=base_url()?>dashboard/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     
-    <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -25,29 +25,12 @@
                     </a>
                     <a class="brand" href="#">Manage Panel</a>
                     <div class="nav-collapse collapse">
-                        <!-- <ul class="nav pull-right">
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Vincent Gabriel <i class="caret"></i>
-
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="#">Profile</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a tabindex="-1" href="login.html">Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul> -->
                          <?=$login?>
                         <ul class="nav">
                             <li class="active">
                                 <a href="<?=base_url('manage')?>">Dashboard</a>
                             </li>
-                            <!-- 
-                            <li class="dropdown">
+                            <!-- <li class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Settings <b class="caret"></b>
 
                                 </a>
@@ -67,8 +50,8 @@
                                                 <a href="#">Errors</a>
                                             </li>
                                         </ul>
-                                    </li> 
-                                    <li>
+                                    </li>
+                                     <li>
                                         <a href="#">SEO Settings</a>
                                     </li>
                                     <li>
@@ -80,10 +63,10 @@
                                     </li>
                                     <li>
                                         <a href="#">Other Link</a>
-                                    </li> -->
+                                    </li> 
                                 </ul>
                             </li>
-                            <!-- <li class="dropdown">
+                            <li class="dropdown">
                                 <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Content <i class="caret"></i>
 
                                 </a>
@@ -105,8 +88,8 @@
                                         <a tabindex="-1" href="#">FAQ</a>
                                     </li>
                                 </ul>
-                            </li> -->
-                          <!--   <li class="dropdown">
+                            </li>
+                            <li class="dropdown">
                                 <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Users <i class="caret"></i>
 
                                 </a>
@@ -121,14 +104,13 @@
                                         <a tabindex="-1" href="#">Permissions</a>
                                     </li>
                                 </ul>
-                            </li>
-                        </ul> -->
+                            </li> -->
+                        </ul>
                     </div>
                     <!--/.nav-collapse -->
                 </div>
             </div>
         </div>
-
         <div class="container-fluid">
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
@@ -139,7 +121,7 @@
                         <li>
                             <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> My Work</a>
                         </li>
-
+                        
                         <li>
                             <a href="<?=base_url('manage/upload')?>"><i class="icon-chevron-right"></i> Upload</a>
                         </li>
@@ -148,121 +130,145 @@
                         </li>
                         <li>
                             <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
-                        </li>
-                       
+                        </li> 
                     </ul>
                 </div>
                 
-                <!--/span-->
+                <!--/span-->    <body>
+
                 <div class="span9" id="content">
-                    <div class="row-fluid">
-                        <div class="alert alert-success">
-							<button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <h4>My Work Show!</h4>
-                        	</div>
-                        	<!-- <div class="navbar">
-                            	<div class="navbar-inner">
-	                                <ul class="breadcrumb">
-	                                    <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
-	                                    <i class="icon-chevron-right show-sidebar" style="display:none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
-	                                    <li>
-	                                        <a href="#">Dashboard</a> <span class="divider">/</span>	
-	                                    </li>
-	                                    <li>
-	                                        <a href="#">Settings</a> <span class="divider">/</span>	
-	                                    </li>
-	                                    <li class="active">Tools</li>
-	                                </ul>
-                            	</div>
-                        	</div> -->
-                    	</div>
-                  
-                  
-                       
-                       
-                    
-                    
+
+
                     <div class="row-fluid">
                         <!-- block -->
-                        <!-- <div class="block">
+                        <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">My Work</div>
+                                <div class="muted pull-left">My List</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th>#</th>
+                                          <th>Title</th>
+                                          <th>Publisher</th>
+                                          <th>Create Time</th>
+                                          <th>Voted</th>
+                                          <th>Status</th>
+                                          <th>Watch</th>
+                                          <th>Operation</th>
 
-                                </div>
-                        </div> -->
-
-
-                        
-                        <div class="block-content collapse in">
-                            <!-- here to load the data -->
-                            <?php 
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                             <?php 
                                 $num =count($result);
                                 $i = 0;
                                 $imagepath = '';
+                                
+                                echo "<form name=\"updateForm\"  action='' style=\"margin: 0 0 0px;\" method=\"post\">";
+
                                 foreach ($result as $row)
                                 {   
-                                    $imagepath =base_url().'/models/'.$row->publisher.'/'.$row->imagename;
-                                    $obj = '/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'/'.$row->publisher.'_'.$row->createtime.'.obj';
-                                    //var_dump($obj);
-                                    if( $i%4 == 0){
-                                        echo " <div class=\"row-fluid padd-bottom\">
-                                                  <div class=\"span3\">
-                                                      <div class=\"thumbnail\">
-                                                        <img data-src=\"holder.js/230x320\"  src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
-                                                        <div class=\"caption\">
-                                                          <h3>".$row->title."</h3>
-                                                          <p>".$row->description."</p>
-                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a></p>
-                                                        </div>
-                                                      </div>
-                                                  </div>";
-                                    }elseif(($i+1)%4 == 0){
-                                        echo "  
-                                                  <div class=\"span3\">
-                                                      <div class=\"thumbnail\">
-                                                        <img data-src=\"holder.js/230x320\"  src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
-                                                        <div class=\"caption\">
-                                                          <h3>".$row->title."</h3>
-                                                          <p>".$row->description."</p>
-                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a></p>
-                                                        </div>
-                                                      </div>
-                                                  </div>
-                                                </div>";
-                                    }else{
-                                        echo "  
-                                                  <div class=\"span3\">
-                                                      <div class=\"thumbnail\">
-                                                        <img data-src=\"holder.js/230x320\"  src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
-                                                        <div class=\"caption\">
-                                                          <h3>".$row->title."</h3>
-                                                          <p>".$row->description."</p>
-                                                          <p><a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a></p>
-                                                        </div>
-                                                      </div>
-                                                  </div>";
+                                    $status="";
+                                    if($row->status == "1"){
+                                        $status = "Public";
+                                    }elseif ($row->status == "2") {
+                                        $status = "Hide";
                                     }
 
-                                    $i++;
-                                  
+                                    $obj = '/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'/'.$row->publisher.'_'.$row->createtime.'.obj';
+                                    $downloadlink = base_url().'/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'.zip';
+                                    echo "
+                                    <tr class=\"success\">
+                                          <td>".$row->id."</td>
+                                          <td>".$row->title."</td>
+                                          <td>".$row->publisher."</td>
+                                          <td>".$row->createtime."</td>
+                                          <td>".$row->voted."</td>
+                                          <td>".$status."</td>
+                                          <td>
+                                            <a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a>
+                                          </td>
+                                          
+                                          <td>
+                                                <input name=\"workid_".$row->id."\" value=\"".$row->id."\" type=\"hidden\">
+                                                <button type\"button\" class=\"btn btn-danger\" name=\"delBtn\" onclick=\"submitFun('del',".$row->id.",0);\">Delete</button>
+                                                <button type=\"button\" class=\"btn btn-success\" name=\"hidBtn\"  onclick=\"submitFun('hide',".$row->id.",2);\"> Hide</button>
+                                                <button type=\"button\" class=\"btn btn-info\" name=\"pubBtn\"  onclick=\"submitFun('public',".$row->id.",1);\">Public</button>
+                                                <a data-toggle=\"modal\" href=\"".$downloadlink."\" class=\"btn btn-primary\" role=\"button\" >Download</a>
+
+
+                                          </td>
+                                        </tr> 
+
+
+                                    ";
+                                   
+
+                                    
                                 }
-                            ?>                            
+                                echo " </form>";
+                            ?>
 
 
+                                        
+<!-- 
+                                        <tr class="error">
+                                          <td>1</td>
+                                          <td>Mark</td>
+                                          <td>Otto</td>
+                                          <td>@mdo</td>
+                                          <td>100</td>
+                                          <td >
 
+                                            <form name="updateForm" action="<?=base_url('/manage/deletemywork');?>" stype="float:left; margin: 0;width:50px"  method="post">
+                                                <input name="workid" value="1" type="hidden">
+                                                <input type="submit" class="btn btn-danger" name="delBtn" value="Delete" >
+                                            </form> 
+                                            <form name="updateForm" action="<?=base_url('/manage/hidemywork');?>"  method="post">
+                                                <input name="workid" value="1" type="hidden">
+                                                <input type="button" class="btn btn-danger" name="hideBtn" value="Hide" >
+
+                                            </form>  
+                                            <form name="updateForm" action="<?=base_url('/manage/showmywork');?>" style="margin: 0 0 0px;" method="post">
+                                                <input name="workid" value="1" type="hidden">
+                                                <input type="button" class="btn btn-info" name="showBtn" value="Show" >
+                                            </form>
+                                          </td>
+                                        </tr>    -->                                       
+
+                              <!--           <tr class="info">
+                                          <td>1</td>
+                                          <td>Mark</td>
+                                          <td>Otto</td>
+                                          <td>@mdo</td>
+                                          <td>100</td>
+                                          <td>
+
+                                            
+                                            <button type="button" class="btn btn-danger">Delete</button>
+                                            <button type="button" class="btn btn-success">Hide </button>
+                                            <button type="button" class="btn btn-info">Un-hide</button>
+
+                                          </td>
+                                        </tr>                                        
+
+                                        -->
+                                      </tbody>
+                                    </table>
                                 </div>
-
-                              
+                            </div>
                         </div>
-                    </div>
-                        
                         <!-- /block -->
-                </div>
+                    </div>
+
+                 
             </div>
-        </div>
-   
             <hr>
-            <footer>
+            <hr>
+              <footer>
                 <p>Copyright &copy; 3D Website</p>
             </footer>
         </div>
@@ -289,15 +295,16 @@
 
 
 
-
         <!--/.fluid-container-->
         <script src="<?=base_url()?>dashboard/vendors/jquery-1.9.1.min.js"></script>
         <script src="<?=base_url()?>dashboard/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?=base_url()?>dashboard/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
         <script src="<?=base_url()?>dashboard/assets/scripts.js"></script>
+        <script src="<?=base_url()?>dashboard/assets/DT_bootstrap.js"></script>
         <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.js');?>"></script>
         <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.webgl.js');?>"></script>
         <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.touch.js');?>"></script>
+
         <script type="text/javascript">
 
             var canvas = document.getElementById('cv');
@@ -323,7 +330,16 @@
                 viewer.update();
             }
 
-    </script>
+            function submitFun(act,id,status)
+            {   
+                
+                var acitonvalue = "<?=base_url()?>manage/updatemywork/"+id+"/"+status;
+                document.updateForm.attributes["action"].value  = acitonvalue;
+                updateForm.submit();
+            }
+        </script>
+
+        
     </body>
 
-</html>
+</html> 

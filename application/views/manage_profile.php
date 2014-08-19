@@ -43,9 +43,9 @@
                         <?=$login?>
                         <ul class="nav">
                             <li class="active">
-                                <a href="#">Dashboard</a>
+                                <a href="<?=base_url('manage')?>">Dashboard</a>
                             </li>
-                            <li class="dropdown">
+                            <!-- <li class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Settings <b class="caret"></b>
 
                                 </a>
@@ -66,7 +66,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                   <!--  <li>
+                                    <li>
                                         <a href="#">SEO Settings</a>
                                     </li>
                                     <li>
@@ -78,7 +78,7 @@
                                     </li>
                                     <li>
                                         <a href="#">Other Link</a>
-                                    </li> -->
+                                    </li> 
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -119,7 +119,7 @@
                                         <a tabindex="-1" href="#">Permissions</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
@@ -143,11 +143,14 @@
                         <li>
                             <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
                         </li>
-                       
+                        <li>
+                            <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
+                        </li>
                     </ul>
                 </div>
                 
-                <!--/span-->    <body>
+                <!--/span-->    
+                <body>
 
                 <div class="span9" id="content">
                      

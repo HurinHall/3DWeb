@@ -6,6 +6,7 @@ class Vote extends CI_Controller {
     	parent::__construct();
     	$this->load->helper('url');
     	$this->load->library('session');
+      $this->load->database();
   	}
 	
 	public function index()
@@ -21,6 +22,8 @@ class Vote extends CI_Controller {
           </ul>
         </li>
       </ul>";
+
+
 		}else{
 			$data['login']="<form class=\"navbar-form navbar-right\" role=\"form\" action=\"".base_url('/login')."\" method=\"post\">
             <div class=\"form-group\">
@@ -34,6 +37,10 @@ class Vote extends CI_Controller {
             <a class=\"btn btn-success\" href=\"".base_url('/register')."\">Register</a>
           </form>";
 		}
+    $sql = "SELECT * FROM work WHERE  status = 1 AND competition = 1" ;
+
+    $query = $this->db->query($sql);
+    $data['result'] = $query->result();
 		$this->load->view('vote',$data);
 	}
 }

@@ -23,7 +23,9 @@ class Manage extends CI_Controller {
             </ul>
           </li>
           </ul>";
-      $sql = "SELECT * FROM work WHERE publisher = '".$this->session->userdata('name')."'";
+      //$sql = "SELECT * FROM work WHERE publisher = '".$this->session->userdata('name')."'";
+      $sql = "SELECT * FROM work WHERE publisher = '".$this->session->userdata('name')."' AND status != 0 " ;
+
       $query = $this->db->query($sql);
       $data['result'] = $query->result();
     
@@ -176,7 +178,7 @@ class Manage extends CI_Controller {
       }
 
       if($error1==0 && $error2==0){
-          $query=$this->db->query("INSERT INTO work (id, title, createtime, category, imagename, threedfilename,description,publisher,voted,competition) VALUES (null, '$title', '$creattime','$category','$filename.jpg', '$filename.obj','$description','$publisher',0,0)");
+          $query=$this->db->query("INSERT INTO work (id, title, createtime, category, imagename, threedfilename,description,publisher,voted,competition,status) VALUES (null, '$title', '$creattime','$category','$filename.jpg', '$filename.obj','$description','$publisher',0,0,1)");
           if(!$query){
             echo "<script>alert('Insert Failed !');window.location='".base_url('/manage/upload')."';</script>";
           }else{
@@ -222,9 +224,46 @@ class Manage extends CI_Controller {
   }
 
 
-  
+    public function edit()
+    {
+      if($this->session->userdata('name')){
+
+        $data['login']="<ul class=\"nav pull-right\">
+            <li class=\"dropdown\">
+              <a href=\"#\" role=\"button\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"> <i class=\"icon-user\"></i> ".$this->session->userdata('name')." <i class=\"caret\"></i>
+
+              </a>
+              <ul class=\"dropdown-menu\">
+                  <li><a href=\"".base_url('/login/logout?url='.base_url('/about'))."\">Logout</a></li>
+              </ul>
+            </li>
+            </ul>";
+        $sql = "SELECT * FROM work WHERE publisher = '".$this->session->userdata('name')."' AND status != 0" ;
+        $query = $this->db->query($sql);
+        $data['result'] = $query->result();
+      
+
+        $this->load->view('manage_edit',$data);
+      }else{
+        echo "<script>alert('Please Login first!');window.location='".base_url()."';</script>";
+      }
+
+      
+    }
 
 
+    public function updatemywork($id,$status){
+
+            $sql = "UPDATE work set status= $status WHERE id = $id";
+            $query=$this->db->query($sql);
+            if($status == "0"){
+               echo "<script>alert('Delete Successfully!');</script>";
+            }
+            echo "<script>window.location='".base_url('manage/edit')."';</script>";
+          
+            
+           
+    }
 
 
 
