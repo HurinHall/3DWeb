@@ -174,7 +174,7 @@ class Manage extends CI_Controller {
         // rename the obj file
          $this->objfilerename($destinantion,$filename);
 
-          $error2=0;
+         $error2=0;
       }
 
       if($error1==0 && $error2==0){

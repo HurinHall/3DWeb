@@ -156,7 +156,6 @@
                                           <th>Create Time</th>
                                           <th>Voted</th>
                                           <th>Status</th>
-                                          <th>Watch</th>
                                           <th>Operation</th>
 
                                         </tr>
@@ -188,16 +187,14 @@
                                           <td>".$row->createtime."</td>
                                           <td>".$row->voted."</td>
                                           <td>".$status."</td>
-                                          <td>
-                                            <a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a>
-                                          </td>
-                                          
+                                       
                                           <td>
                                                 <input name=\"workid_".$row->id."\" value=\"".$row->id."\" type=\"hidden\">
                                                 <button type\"button\" class=\"btn btn-danger\" name=\"delBtn\" onclick=\"submitFun('del',".$row->id.",0);\">Delete</button>
                                                 <button type=\"button\" class=\"btn btn-success\" name=\"hidBtn\"  onclick=\"submitFun('hide',".$row->id.",2);\"> Hide</button>
                                                 <button type=\"button\" class=\"btn btn-info\" name=\"pubBtn\"  onclick=\"submitFun('public',".$row->id.",1);\">Public</button>
                                                 <a data-toggle=\"modal\" href=\"".$downloadlink."\" class=\"btn btn-primary\" role=\"button\" >Download</a>
+                                                <a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a>
 
 
                                           </td>
@@ -275,7 +272,7 @@
 
 
         <!-- show 3D design -->
-        <div class="modal fade" id="view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="left: 600px;">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
