@@ -78,7 +78,7 @@
                               <h5>Description:".$row->description."</h5>
                               <p>
                               	<a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a>
-                                <a data-toggle=\"modal\" href=\"".$downloadlink."\" class=\"btn btn-primary\" role=\"button\" >Download</a>
+                                <a href=\"".$downloadlink."\" target=\"_blank\" class=\"btn btn-primary\" role=\"button\" >Download</a>
 
                               </p>
                             </div>

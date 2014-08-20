@@ -46,12 +46,15 @@ class Vote extends CI_Controller {
 
 
   public function do_vote(){
-      echo "<script>alert("+$_POST['voterid']+");</script>";
-      echo "<script>alert("+$_POST['workid']+");</script>";
-      $updateusersql = "UPDATE user SET vote = 0 WHERE id = '".$_POST['voterid']."'";
+      $updateusersql = "UPDATE user SET vote = vote+1 WHERE id = '".$_POST['voterid']."'";
       $this->db->query($updateusersql);
-      echo "<script>alert("+$_POST['workid']+");</script>";
-
+      $updateusersql = "UPDATE work SET voted = voted+1 WHERE id = '".$_POST['workid']."'";
+      $this->db->query($updateusersql);
+      $sql = "SELECT * FROM work WHERE  id = '".$_POST['workid']."'" ;
+      $query = $this->db->query($sql);
+      foreach($query->result() as $item){
+	      echo $item->voted;
+      }
 
       /*$getworksql = "SELECT voted FROM work WHERE  id = '".$_POST['workid']."'";
       $voted = $this->db->query($getworksql);

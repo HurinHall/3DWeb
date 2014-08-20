@@ -77,7 +77,7 @@
                               <h3>Title:".$row->title."</h3>
                               <h4>Publisher:".$row->publisher."</h4>
                               <h5>Description:".$row->description."</h5>
-                              <p class=\"text-danger\">Vote: ".$row->voted."</p>
+                              <p class=\"text-danger\" id=\"vote".$row->id."\">Vote: ".$row->voted."</p>
                               <p>
                                 <a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a>
                                 <a class=\"btn btn-success\" role=\"button\" onclick=\"check_vote(".$row->id.")\">Vote</a>
@@ -187,40 +187,31 @@
         function check_vote(workid){
           var name = "<?=$this->session->userdata('name');?>";
           var voterid = "<?=$this->session->userdata('userid');?>";
-          var flag = 0;
           if(name.length<=0){
              alert("Please login first!");
           }else{
-              flag = had_voted(voterid,workid);
-              alert(flag);
-          
+              had_voted(voterid,workid);
           }
-          
-      
       }
 
 
         //check if user had vote
         function had_voted(voterid,workid){
           var _json = jQuery.param({ "userid": voterid});
-         
+          var result=0;
           $.ajax({ 
                     url: "<?=base_url('/vote/had_voted')?>", 
                     type: "POST",
                     data: _json,
                     dataType:"json",
-                    success: function(){
-                    
-                      alert("You can just vote for one time  !");
-                      
-                    }
-                
-                
-              });
-           
-          
-           
-          
+                    success: function(data){
+                      if(data!=0){
+                      	alert("You can just vote for one time  !");
+                      }else{
+	                      do_vote(voterid,workid);
+                      }
+                    }            
+              });   
         }
         // 修改用户已经投票， 并且 修改票数 （这里有问题，有待解决）
         function do_vote(voterid,workid){
@@ -231,8 +222,9 @@
               data: _json,
               dataType:"json",
               success: function(data){
-              if(data.length>0){
+              if(data){
               alert("Thank you for your vote !");
+              $('p#vote'+workid).html("Vote: "+data);
             }
           }
            });

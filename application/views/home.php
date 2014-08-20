@@ -17,6 +17,7 @@
     <link href="<?=base_url('/css/jquery.fancybox.css');?>" rel="stylesheet">
     
     <script src="<?=base_url('/js/jquery-1.3.2.min.js');?>"></script>
+    <script src="<?=base_url('/js/bootstrap.min.js');?>"></script>
     <script src="<?=base_url('/js/jqFancyTransitions.js');?>" type="text/javascript" ></script>
     <script src="<?=base_url('/js/jquery.easing.1.3.js');?>" type="text/javascript"></script>
     <script src="<?=base_url('/js/jquery.fancybox-1.2.1.js');?>" type="text/javascript"></script>
@@ -128,6 +129,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="<?=base_url('/js/bootstrap.min.js');?>"></script>
+   
   </body>
 </html>
