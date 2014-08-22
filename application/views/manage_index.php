@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html>
     
     <head>
-        <title>Dashboard</title>
+        <title>Uplaod 3D Model</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <!-- Bootstrap -->
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -15,7 +16,6 @@
         <script src="<?=base_url()?>dashboard/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     
-    <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -25,29 +25,12 @@
                     </a>
                     <a class="brand" href="#">Manage Panel</a>
                     <div class="nav-collapse collapse">
-                        <!-- <ul class="nav pull-right">
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Vincent Gabriel <i class="caret"></i>
-
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="#">Profile</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a tabindex="-1" href="login.html">Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul> -->
                          <?=$login?>
                         <ul class="nav">
                             <li class="active">
                                 <a href="<?=base_url('manage')?>">Dashboard</a>
                             </li>
-                            <!-- 
-                            <li class="dropdown">
+                            <!-- <li class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Settings <b class="caret"></b>
 
                                 </a>
@@ -67,8 +50,8 @@
                                                 <a href="#">Errors</a>
                                             </li>
                                         </ul>
-                                    </li> 
-                                    <li>
+                                    </li>
+                                     <li>
                                         <a href="#">SEO Settings</a>
                                     </li>
                                     <li>
@@ -80,10 +63,10 @@
                                     </li>
                                     <li>
                                         <a href="#">Other Link</a>
-                                    </li> -->
+                                    </li> 
                                 </ul>
                             </li>
-                            <!-- <li class="dropdown">
+                            <li class="dropdown">
                                 <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Content <i class="caret"></i>
 
                                 </a>
@@ -105,8 +88,8 @@
                                         <a tabindex="-1" href="#">FAQ</a>
                                     </li>
                                 </ul>
-                            </li> -->
-                          <!--   <li class="dropdown">
+                            </li>
+                            <li class="dropdown">
                                 <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Users <i class="caret"></i>
 
                                 </a>
@@ -121,39 +104,66 @@
                                         <a tabindex="-1" href="#">Permissions</a>
                                     </li>
                                 </ul>
-                            </li>
-                        </ul> -->
+                            </li> -->
+                        </ul>
                     </div>
                     <!--/.nav-collapse -->
                 </div>
             </div>
         </div>
-
         <div class="container-fluid">
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li>
-                            <a href="<?=base_url()?>"><i class="icon-chevron-right"></i> 3D Homepage</a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> My Work</a>
-                        </li>
+                        
+                        <?php 
+                            if($this->session->userdata('name') !='admin'){ ?>
+                                <li>
+                                    <a href="<?=base_url()?>"><i class="icon-chevron-right"></i> 3D Homepage</a>
+                                </li>
 
-                        <li>
-                            <a href="<?=base_url('manage/upload')?>"><i class="icon-chevron-right"></i> Upload</a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
-                        </li>
-                       
+                                <li>
+                                    <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> Work List</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/upload')?>"><i class="icon-chevron-right"></i> Upload</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
+                                </li> 
+
+
+                           <?php }else{   ?>
+
+                                    <li>
+                                    <a href="<?=base_url()?>"><i class="icon-chevron-right"></i> 3D Homepage</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> Work List</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/race')?>"><i class="icon-chevron-right"></i> Public Race</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
+                            <?php }?>
                     </ul>
                 </div>
                 
-                <!--/span-->
+                <!--/span-->   
+
+                <body>
                 <div class="span9" id="content">
                     <div class="row-fluid">
                         <div class="alert alert-success">
@@ -246,12 +256,13 @@
                                     $i++;
                                   
                                 }
+
                             ?>                            
 
 
 
                                 </div>
-
+                                <div> <?php echo $this->pagination->create_links(); ?> </div>
                               
                         </div>
                     </div>

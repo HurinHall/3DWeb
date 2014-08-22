@@ -40,10 +40,25 @@ class Work extends CI_Controller {
     
 		}
                     //$sql = "SELECT * FROM work WHERE publisher = '".$this->session->userdata('name')."'";
-      $sql = "SELECT * FROM work WHERE  status = 1" ;
+      /*$sql = "SELECT * FROM work WHERE  status = 1" ;
 
       $query = $this->db->query($sql);
-      $data['result'] = $query->result();
+      $data['result'] = $query->result();*/
+
+       $this->load->library('pagination');
+              $config['base_url'] = site_url('work/index');
+              $this->db->where('status ', '1');
+              $this->db->from('work');
+              $config['total_rows'] = $this->db->count_all_results();
+              $config['per_page'] =8;
+              $config['uri_segment'] = 3;  // 表示第 3 段 URL 为当前页数，如 index.php/控制器/方法/页数，如果表示当前页的 URL 段不是第 3 段，请修改成需要的数值。
+              $config['cur_tag_open'] = ' <a class="current">'; // 当前页开始样式   
+              $config['cur_tag_close'] = '</a>';
+
+              $this->pagination->initialize($config);
+              $this->load->model('Work_model');
+              $data['result'] = $this->Work_model->public_get_all_entries($config['per_page'],$this->uri->segment(3));
+              $data['pagelinks'] = $this->pagination->create_links();//创分页链接
 		$this->load->view('work',$data);
 	}
 }

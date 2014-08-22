@@ -130,22 +130,49 @@
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li>
-                            <a href="<?=base_url()?>"><i class="icon-chevron-right"></i> 3D Homepage</a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> Dashboard</a>
-                        </li>
-                       
-                        <li>
-                            <a href="<?=base_url('manage/upload')?>"><i class="icon-chevron-right"></i> Upload</a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
-                        </li>
+                        
+                        <?php 
+                            if($this->session->userdata('name') !='admin'){ ?>
+                                <li>
+                                    <a href="<?=base_url()?>"><i class="icon-chevron-right"></i> 3D Homepage</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> Work List</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/upload')?>"><i class="icon-chevron-right"></i> Upload</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
+                                </li> 
+
+
+                           <?php }else{   ?>
+
+                                    <li>
+                                    <a href="<?=base_url()?>"><i class="icon-chevron-right"></i> 3D Homepage</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> Work List</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/race')?>"><i class="icon-chevron-right"></i> Public Race</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
+                            <?php }?>
                     </ul>
                 </div>
                 

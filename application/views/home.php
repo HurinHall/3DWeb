@@ -56,6 +56,7 @@
             <li><a href="<?=base_url('/work');?>">Work</a></li>
            <li><a href="<?=base_url('/vote');?>">Vote</a></li>
            <li><a href="<?=base_url('/bbs');?>">BBS</a></li>
+           <li><a href="<?=base_url('/announcement');?>">Announcement</a></li>
            <li><a href="<?=base_url('/contact');?>">Contact</a></li>
           </ul>
          

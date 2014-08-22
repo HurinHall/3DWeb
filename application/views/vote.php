@@ -44,6 +44,7 @@
             <li><a href="<?=base_url('/work');?>">Work</a></li>
             <li class="active"><a href="<?=base_url('/vote');?>">Vote</a></li>
             <li><a href="<?=base_url('/bbs');?>">BBS</a></li>
+           <li><a href="<?=base_url('/announcement');?>">Announcement</a></li>
             <li><a href="<?=base_url('/contact');?>">Contact</a></li>
            </ul>
          
@@ -56,7 +57,7 @@
 	<div class="container">
 	
 	<div class="page-header">
-	      <h1>The Most Popular 3D Design In 2014</h1>
+	      <!-- <h1>The Most Popular 3D Design In 2014</h1> -->
 	</div>
 	  
 	<div class="row">
@@ -107,7 +108,7 @@
 	</div>
 	
 	<div class="row">
-	<ul class="pagination pull-right">
+	<!-- <ul class="pagination pull-right">
 		<li><a href="#">&laquo;</a></li>
 		<li class="active"><a href="#">1</a></li>
 		<li><a href="#">2</a></li>
@@ -115,7 +116,8 @@
 		<li><a href="#">4</a></li>
 		<li><a href="#">5</a></li>
 		<li><a href="#">&raquo;</a></li>
-	</ul>
+	</ul> -->
+    <?php  if(count($result) != 0 ) {echo $this->pagination->create_links(); }?> 
 	</div>
     <hr>
 

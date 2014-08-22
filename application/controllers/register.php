@@ -45,7 +45,8 @@ class Register extends CI_Controller {
 			$password=$_POST['password'];
 			$studentid=$_POST['id'];
 			$major=$_POST['major'];
-			$query=$this->db->query("INSERT INTO user (id, name, email, pwd, studentid, major) VALUES (null, '$name', '$email', PASSWORD('$password'), '$studentid', '$major')");
+			$role="user";
+			$query=$this->db->query("INSERT INTO user (id, name, email, pwd, studentid, major,role) VALUES (null, '$name', '$email', PASSWORD('$password'), '$studentid', '$major','$role')");
 			if(!$query){
 				echo "<script>alert('Register Failed !');window.location='".base_url('/register')."';</script>";
 			}else{

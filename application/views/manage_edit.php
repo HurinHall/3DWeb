@@ -115,26 +115,55 @@
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li>
-                            <a href="<?=base_url()?>"><i class="icon-chevron-right"></i> 3D Homepage</a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> My Work</a>
-                        </li>
                         
-                        <li>
-                            <a href="<?=base_url('manage/upload')?>"><i class="icon-chevron-right"></i> Upload</a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
-                        </li> 
+                        <?php 
+                            if($this->session->userdata('name') !='admin'){ ?>
+                                <li>
+                                    <a href="<?=base_url()?>"><i class="icon-chevron-right"></i> 3D Homepage</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> Work List</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/upload')?>"><i class="icon-chevron-right"></i> Upload</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
+                                </li> 
+
+
+                           <?php }else{   ?>
+
+                                    <li>
+                                    <a href="<?=base_url()?>"><i class="icon-chevron-right"></i> 3D Homepage</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage')?>"><i class="icon-chevron-right"></i> Work List</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/race')?>"><i class="icon-chevron-right"></i> Public Race</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
+                            <?php }?>
                     </ul>
                 </div>
                 
-                <!--/span-->    <body>
+                <!--/span-->   
+
+                <body>
 
                 <div class="span9" id="content">
 
@@ -143,17 +172,25 @@
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">My List</div>
+                                <div class="muted pull-left">
+                                    <a href="<?=base_url('manage/edit')?>">Work List </a> 
+                                    / 
+                                    <a href="<?=base_url('manage/editrace')?>">Race List </a> 
+
+                                </div>
+
                             </div>
-                            <div class="block-content collapse in">
+                            <div class="block-content collapse in" style="height: 650px;">
                                 <div class="span12">
-                                    <table class="table">
+                                    <table class="table table-hover table-bordered">
                                       <thead>
                                         <tr>
                                           <th>#</th>
                                           <th>Title</th>
                                           <th>Publisher</th>
                                           <th>Create Time</th>
+                                          <th>Race</th>
+                                          <th>N-term</th>
                                           <th>Voted</th>
                                           <th>Status</th>
                                           <th>Operation</th>
@@ -162,41 +199,90 @@
                                       </thead>
                                       <tbody>
                              <?php 
-                                $num =count($result);
-                                $i = 0;
-                                $imagepath = '';
+
+                                //var_dump(count($raceid));
+                                /*var_dump(isset($raceid));
+                                var_dump($nterm );
+                                var_dump(strlen($nterm));*/
+
+
+                               
                                 
-                                echo "<form name=\"updateForm\"  action='' style=\"margin: 0 0 0px;\" method=\"post\">";
 
                                 foreach ($result as $row)
-                                {   
-                                    $status="";
-                                    if($row->status == "1"){
-                                        $status = "Public";
-                                    }elseif ($row->status == "2") {
-                                        $status = "Hide";
-                                    }
+                                {   $status = $row->status;
+                                if($status  == "0"){
+                                    $status = "Deleted";
+                                }else if($status  == "1"){
+                                    $status = "Public";
+                                }else if($status  =="2"){
+                                    $status = "Hidden";
+                                }
+
+                               /* $sql = "SELECT * FROM work WHERE  id = ".$row->id ;
+                                $query = $this->db->query($sql);
+                                foreach($query->result() as $item){
+                                  echo $item->race;
+                                }*/
+                                   
 
                                     $obj = '/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'/'.$row->publisher.'_'.$row->createtime.'.obj';
                                     $downloadlink = base_url().'/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'.zip';
                                     echo "
-                                    <tr class=\"success\">
+                                    <tr id=\"tr".$row->id."\" >
                                           <td>".$row->id."</td>
                                           <td>".$row->title."</td>
                                           <td>".$row->publisher."</td>
                                           <td>".$row->createtime."</td>
+                                          <td id=\"race".$row->id."\">".$row->race."</td>
+                                          <td id=\"nterm".$row->id."\">".$row->nterm."</td>
                                           <td>".$row->voted."</td>
-                                          <td>".$status."</td>
+                                          <td id=\"status".$row->id."\">".$status."</td>
                                        
                                           <td>
-                                                <input name=\"workid_".$row->id."\" value=\"".$row->id."\" type=\"hidden\">
-                                                <button type\"button\" class=\"btn btn-danger\" name=\"delBtn\" onclick=\"submitFun('del',".$row->id.",0);\">Delete</button>
-                                                <button type=\"button\" class=\"btn btn-success\" name=\"hidBtn\"  onclick=\"submitFun('hide',".$row->id.",2);\"> Hide</button>
-                                                <button type=\"button\" class=\"btn btn-info\" name=\"pubBtn\"  onclick=\"submitFun('public',".$row->id.",1);\">Public</button>
-                                                <a data-toggle=\"modal\" href=\"".$downloadlink."\" class=\"btn btn-primary\" role=\"button\" >Download</a>
-                                                <a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a>
+                        <li class=\"dropdown\" style=\"list-style-type:none\">
+                                <a href=\"#\" role=\"button\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">TO-DO <i class=\"caret\"></i>
+
+                                </a>
+                                <ul class=\"dropdown-menu\" style=\"min-width: 110px;\">
+                                    <li>
+                                                     <a data-toggle=\"modal\" role=\"button\" class=\"btn btn-danger .btn-xs\"   name=\"delBtn\"     onclick=\"changestatus(".$row->id.",0);\">Delete</a>
+                                    </li>
+                                    <li>
+                                                <a data-toggle=\"modal\" role=\"button\" class=\"btn btn-success\"  name=\"hidBtn\"     onclick=\"changestatus(".$row->id.",2);\"> Hide</a>
+                                    </li>
+                                    <li>
+                                                <a data-toggle=\"modal\" role=\"button\" class=\"btn btn-info\"     name=\"pubBtn\"     onclick=\"changestatus(".$row->id.",1);\">Public</a>
+                                    </li>
+
+                                      ";
+                            if(strlen($raceid)>0){
+                                echo "
+
+                                    <li>
+                                                <a data-toggle=\"modal\" role=\"button\" class=\"btn btn-warning\"  name=\"raceBtn\"   onclick=\"racegame(".$row->id.",".$raceid.",'YES','".$nterm."');\"  >Race</a>
+                                    </li>
+                                  
+                                    <li>
+                                                <a data-toggle=\"modal\" role=\"button\" class=\"btn btn-warning\"  name=\"quitBtn\"   onclick=\"quitgame(".$row->id.",".$raceid.",'NO','".$nterm."');\"  >Quit</a>
+                                    </li>
+                                      ";
+
+                            }
+                                
+
+                                echo "      
+                                        <li>
+                                                <a data-toggle=\"modal\" role=\"button\" class=\"btn btn-primary\"  href=\"".$downloadlink."\" >Download</a>
+                                    </li>
+                                  
+                                    <li>
+                                                <a data-toggle=\"modal\" role=\"button\" class=\"btn btn-primary\"  href=\"#view\"      onclick=\"loadModel('".$obj ."') \">View</a>
+                                    </li>
 
 
+                                </ul>
+                            </li>
                                           </td>
                                         </tr> 
 
@@ -206,8 +292,8 @@
 
                                     
                                 }
-                                echo " </form>";
                             ?>
+                               
 
 
                                         
@@ -255,6 +341,7 @@
                                         -->
                                       </tbody>
                                     </table>
+                                    <div> <?php echo $this->pagination->create_links(); ?> </div>
                                 </div>
                             </div>
                         </div>
@@ -295,9 +382,7 @@
         <!--/.fluid-container-->
         <script src="<?=base_url()?>dashboard/vendors/jquery-1.9.1.min.js"></script>
         <script src="<?=base_url()?>dashboard/bootstrap/js/bootstrap.min.js"></script>
-        <script src="<?=base_url()?>dashboard/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
         <script src="<?=base_url()?>dashboard/assets/scripts.js"></script>
-        <script src="<?=base_url()?>dashboard/assets/DT_bootstrap.js"></script>
         <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.js');?>"></script>
         <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.webgl.js');?>"></script>
         <script type="text/javascript" src="<?=base_url('/js/libs/jsc3d.touch.js');?>"></script>
@@ -325,15 +410,162 @@
                 var objfile = "<?=base_url('"+obj+"');?>"
                 viewer.replaceSceneFromUrl(objfile);
                 viewer.update();
+                $("#view").show();
+
+            }
+            $(document).ready(function(){
+              $("#view").hide();
+            });
+
+          
+
+            function racegame(workid,raceid,race,nterm){
+                 $.ajax({
+                        url: "<?=base_url('/manage/in_game')?>",
+                        type: "POST",
+                        data: { "workid": workid},
+                        success:function(data){
+                            alert(data);
+                                if(data == "NO"){
+                                    $.ajax({
+                                    url: "<?=base_url('/manage/racer_changeracestatus')?>",
+                                    type: "POST",
+                                    data: { "workid": workid,"raceid":raceid, "race": race ,"nterm":nterm},
+                                    success:function(data){
+                                            if(data){
+                                                $('td#race'+workid).html(data);   
+                                                $('td#nterm'+workid).html(nterm); 
+                                            }
+                                    },
+                                    error: function(){
+                                            alert(arguments[1]);
+                                        }
+                                });
+                                }else{
+                                    alert("You have joined this game.");
+                                }
+                                                
+                        },
+                        error: function(){
+                                alert(arguments[1]);
+                        }
+                    });
+  
             }
 
-            function submitFun(act,id,status)
-            {   
-                
-                var acitonvalue = "<?=base_url()?>manage/updatemywork/"+id+"/"+status;
-                document.updateForm.attributes["action"].value  = acitonvalue;
-                updateForm.submit();
+
+            function quitgame(workid,raceid,race,nterm){
+                 $.ajax({
+                        url: "<?=base_url('/manage/in_game')?>",
+                        type: "POST",
+                        data: { "workid": workid},
+                        success:function(data){
+                            alert(data);
+                                if(data == "YES"){
+                                    $.ajax({
+                                    url: "<?=base_url('/manage/racer_changeracestatus')?>",
+                                    type: "POST",
+                                    data: { "workid": workid,"raceid":raceid, "race": race ,"nterm":nterm},
+                                    success:function(data){
+                                            if(data){
+                                                $('td#race'+workid).html(data);   
+                                                $('td#nterm'+workid).html(nterm); 
+                                            }
+                                    },
+                                    error: function(){
+                                            alert(arguments[1]);
+                                        }
+                                });
+                                }else{
+                                    alert("You have NOT joined this game yet !");
+                                }
+                                                
+                        },
+                        error: function(){
+                                alert(arguments[1]);
+                        }
+                    });
+  
             }
+
+            function changestatus(workid,status)
+            {   
+                var role = '<?=$this->session->userdata('name')?>';
+                if(role != "admin"){
+                    if(status == "0"){
+                        if(confirm("Are you sure to delete this work?")){ 
+                           $("#tr"+workid).hide('slow');
+                           user_changestatus(workid,status); 
+                        }
+                    }else{
+                        
+                        user_changestatus(workid,status);
+                    }
+
+                }else{
+                    if(status == "0"){
+                        if(confirm("Are you sure to delete this work?")){ 
+                           admin_changestatus(workid,status); 
+                        }
+                    }else{
+                        admin_changestatus(workid,status);
+                    }
+
+                }                  
+            }
+
+            function admin_changestatus(workid,status){
+                var _json = jQuery.param({ "workid": workid, "status": status });
+                var _status = "";
+                    $.ajax({
+                        url: "<?=base_url('/manage/changestatus')?>",
+                        type: "POST",
+                        data: _json,
+                        dataType:"json",
+                        success:function(data){
+
+                                if(data == 0){
+                                    _status = "Deleted";
+                                }else if(data == 1){
+                                    _status = "Public";
+                                }else if(data ==2){
+                                    _status = "Hidden";
+                                }
+                               $('td#status'+workid).html(_status);      
+
+                        },
+                        error: function(){
+                                alert(arguments[1]);
+                            }
+                    });
+            }
+
+            function user_changestatus(workid,status){
+                var _json = jQuery.param({ "workid": workid, "status": status });
+                var _status = "";
+                    $.ajax({
+                        url: "<?=base_url('/manage/changestatus')?>",
+                        type: "POST",
+                        data: _json,
+                        dataType:"json",
+                        success:function(data){
+                               if(data == 1){
+                                    _status = "Public";
+                                }else if(data ==2){
+                                    _status = "Hidden";
+                                }
+                               $('td#status'+workid).html(_status);      
+                                
+                        },
+                        error: function(){
+                                alert(arguments[1]);
+                            }
+                    });
+            }
+
+            
+
+ 
         </script>
 
         
