@@ -14,6 +14,7 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <script src="<?=base_url()?>dashboard/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        
     </head>
     
         <div class="navbar navbar-fixed-top">
@@ -425,7 +426,7 @@
                         type: "POST",
                         data: { "workid": workid},
                         success:function(data){
-                            alert(data);
+                           // alert(data);
                                 if(data == "NO"){
                                     $.ajax({
                                     url: "<?=base_url('/manage/racer_changeracestatus')?>",
@@ -460,7 +461,7 @@
                         type: "POST",
                         data: { "workid": workid},
                         success:function(data){
-                            alert(data);
+                           //alert(data);
                                 if(data == "YES"){
                                     $.ajax({
                                     url: "<?=base_url('/manage/racer_changeracestatus')?>",

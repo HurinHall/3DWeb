@@ -151,7 +151,7 @@ class Manage extends CI_Controller {
   }
 
   public function checkoldpw(){
-    $sql = "SELECT * FROM user WHERE pwd = PASSWORD('".$_POST['opwd']."')";
+    $sql = "SELECT * FROM user WHERE pwd = md5('".$_POST['opwd']."')";
     $query = $this->db->query($sql);
     echo $query->num_rows();
   }
@@ -160,7 +160,7 @@ class Manage extends CI_Controller {
     if($_POST){
       $password = $_POST['password'];
       $uid = $_POST['uid'];
-      $sql = "UPDATE user set pwd=PASSWORD('$password') WHERE id = $uid";
+      $sql = "UPDATE user set pwd=md5('$password') WHERE id = $uid";
       $query=$this->db->query($sql);
       if(!$query){
         echo "<script>alert('Chanage Password Failed !');window.location='".base_url('/manage/profile')."';</script>";

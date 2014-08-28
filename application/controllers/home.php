@@ -34,6 +34,6 @@ class Home extends CI_Controller {
             <a class=\"btn btn-success\" href=\"".base_url('/register')."\">Register</a>
           </form>";
 		}
-		$this->load->view('home1',$data);
+		$this->load->view('home',$data);
 	}
 }

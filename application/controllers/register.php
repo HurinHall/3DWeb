@@ -46,12 +46,44 @@ class Register extends CI_Controller {
 			$studentid=$_POST['id'];
 			$major=$_POST['major'];
 			$role="user";
-			$query=$this->db->query("INSERT INTO user (id, name, email, pwd, studentid, major,role) VALUES (null, '$name', '$email', PASSWORD('$password'), '$studentid', '$major','$role')");
+			$status="UNACTIVE";
+			$regtime=date('YmdHis',time());
+			$query=$this->db->query("INSERT INTO user (id, name, email, pwd, studentid, major,role,regtime,status) VALUES (null, '$name', '$email', md5('$password'), '$studentid', '$major','$role','$regtime','$status')");
 			if(!$query){
 				echo "<script>alert('Register Failed !');window.location='".base_url('/register')."';</script>";
 			}else{
-				echo "<script>alert('Register Successfully !');window.location='".base_url('/')."';</script>";
+				echo "<script>alert('Register Successfully ! Please go to your Email to Active your account.');window.location='".base_url('/')."';</script>";
 			}
+
+
+		$this->load->library('email');            //加载CI的email类  
+          
+        //以下设置Email参数  
+        $config['protocol'] = 'smtp';  
+        $config['smtp_host'] = 'smtp.163.com';  
+        $config['smtp_user'] = 'website3d';  
+        $config['smtp_pass'] = 'amywebsite';  
+        $config['smtp_port'] = '25';  
+        $config['charset'] = 'utf-8';  
+        $config['wordwrap'] = TRUE;  
+        $config['mailtype'] = 'html';  
+        $this->email->initialize($config);  
+        $pwd = md5($password);
+        $token= md5($name.$pwd.$email.$regtime); 
+       
+
+        $activelink=base_url()."account/active/".$name."/".$token;          
+          
+        //以下设置Email内容  
+        $this->email->from('website3d@163.com', 'website3d');  
+        $this->email->to($email);  
+        $this->email->subject('Welcome to 3D Website!');  
+        $this->email->message('<h3>Dear '.$name.',</h3><br><h4>Thank you for regitered the account in this website! <br>Click the following link to ACTIVE your account.<br>link:<a href='.$activelink.'>'.$activelink.'</a><br> Your Email:'.$email.'<br></h4><p>Any question please contact: admin@uic.edu.hk</p> <br><br>Best all!<br>');  
+        //$this->email->attach('application\controllers\1.jpeg');           //相对于index.php的路径  
+  
+        $this->email->send();  
+  
+        //echo $this->email->print_debugger();        //返回包含邮件内容的字符串，包括EMAIL头和EMAIL正文。用于调试。  
 		}
 	}
 	

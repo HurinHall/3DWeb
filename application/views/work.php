@@ -22,6 +22,9 @@
       <script src="<?=base_url('/js/html5shiv.js');?>"></script>
       <script src="<?=base_url('/js/respond.min.js');?>"></script>
     <![endif]-->
+        <style type="text/css">
+    .container{padding-left: 1px!important;}
+    </style>
   </head>
 
   <body>

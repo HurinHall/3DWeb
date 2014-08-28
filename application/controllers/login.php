@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 		if($_POST['email']&&$_POST['password']){
 			$email=$_POST['email'];
 			$password=$_POST['password'];
-			$query = $this->db->query("SELECT * FROM user WHERE email = '".$email."' AND pwd = PASSWORD('".$password."')");
+			$query = $this->db->query("SELECT * FROM user WHERE email = '".$email."' AND pwd = md5('".$password."') AND status = 'ACTIVE'");
 			if($query->num_rows()==0){
 				echo "<script>alert('Login Failed !');window.location='".$_POST['url']."';</script>";
 			}else{

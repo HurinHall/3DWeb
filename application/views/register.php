@@ -23,6 +23,9 @@
       <script src="<?=base_url('/js/html5shiv.js');?>"></script>
       <script src="<?=base_url('/js/respond.min.js');?>"></script>
     <![endif]-->
+        <style type="text/css">
+    .container{padding-left: 1px!important;}
+    </style>
   </head>
 
   <body>
@@ -45,6 +48,7 @@
             <li><a href="<?=base_url('/work');?>">Work</a></li>
            <li><a href="<?=base_url('/vote');?>">Vote</a></li>
            <li><a href="<?=base_url('/bbs');?>">BBS</a></li>
+           <li><a href="<?=base_url('/announcement');?>">Announcement</a></li>
            <li><a href="<?=base_url('/contact');?>">Contact</a></li>
           </ul>
          
@@ -62,7 +66,7 @@
       	<br />
       	<br />
       	<center>
-	      <div class="row" style="max-width:340px;">
+	      <div class="row" style="max-width:480px;">
 	      	<form class="form-horizontal" role="form" action="<?=base_url('/register/send');?>" method="post" onsubmit="return check();">
 	      		<div class="form-group">
 		      		<label for="Name" class="col-sm-4 control-label">Name</label>
@@ -103,6 +107,9 @@
 			      <div class="form-group">
 				      <div class="col-sm-offset-2 col-sm-10">
 					      <button type="submit" class="btn btn-default">Register</button>
+                /
+                <a href="<?=base_url('/account/forgetpwd');?>" data-toggle="modal" role="button" class="btn btn-default" > Forget Password</a>
+
 					  </div>
 				</div>
 	      	</form>
@@ -144,7 +151,7 @@
                 		if(data==1){	  
                 			alert("This name has been registered !");  
                       $('input#Name').val('');  
-                			$('input#Name').focus();          		
+                			//$('input#Name').focus();          		
 	                		error=1;
                 		}else{
 	                		error=0;
@@ -174,25 +181,25 @@
 	    var reg =  /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 	    if($('input#inputEmail').val().length==0){
 		      alert("Please input email !");
-		      $('input#inputEmail').focus();
+		      //$('input#inputEmail').focus();
 	     }else if(!reg.test($('input#inputEmail').val())){
 		     alert("Wrong email format !");
-		     $('input#inputEmail').focus();
+		     //$('input#inputEmail').focus();
 	     }
     }
     function checkpw(){
 	      if($('input#Password').val().length<6){
 		      alert("The length of password can't less than 6 !");
-		      $('input#Password').focus();
+		      //$('input#Password').focus();
 	      }
     }
     function checkrpw(){
 	      if($('input#Re-Password').val().length<6){
 		      alert("The length of password can't less than 6 !");
-		      $('input#Re-Password').focus();
+		      //$('input#Re-Password').focus();
 	      }else if($('input#Password').val()!=$('input#Re-Password').val()){
 		      alert("Password is not match !");
-		      $('input#Re-Password').focus();
+		      //$('input#Re-Password').focus();
 	      }
     }
     function checkid(){
@@ -214,13 +221,13 @@
 	      });
 	      if($('input#ID').val().length!=10){
 		      alert("Please check student ID again !");
-		      $('input#ID').focus();
+		      //$('input#ID').focus();
 	      }
     }
     function checkmajor(){
 	      if($('input#major').val().length==0){
 		      alert("Please input major !");
-		      $('input#major').focus();
+		      //$('input#major').focus();
 	      }
     }
     </script>
