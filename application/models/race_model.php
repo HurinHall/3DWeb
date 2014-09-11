@@ -19,4 +19,17 @@ class Race_model extends CI_Model {
         $query = $this->db->get('race', $num, $offset);        
         return $query->result();
     }
+
+         // 获取race result所有记录
+    function get_all_result_entries($nterm)
+    {           
+        $this->db->where('nterm', $nterm); 
+        $this->db->where('voted !=', 0); 
+
+        $this->db->order_by('rank','ASC');
+        //$this->db->limit(10);
+
+        $query = $this->db->get('raceresult');        
+        return $query->result();
+    }
 }

@@ -37,14 +37,27 @@ class Work_model extends CI_Model {
         return $query->result();
     }
 
-            //User 获取blog 所有记录
-    function vote_get_all_entries($num, $offset)
+    //User 获取blog 所有记录
+    function vote_get_all_entries($num, $offset,$nterm)
     {   
         $this->db->where('status', '1'); 
         $this->db->where('race', 'YES'); 
+        $this->db->where('nterm ', $nterm);
 
-        $this->db->order_by('id','DESC');
+        $this->db->order_by('voted','DESC');
         $query = $this->db->get('work', $num, $offset);        
+        return $query->result();
+    }
+
+    //get the TOP 10 Votes 
+    function vote_get_top10_entries($nterm)
+    {   
+        $this->db->where('status', '1'); 
+        $this->db->where('race', 'YES'); 
+        $this->db->where('nterm ', $nterm);
+        $this->db->order_by('voted','DESC');
+        $this->db->limit(10);
+        $query = $this->db->get('work');        
         return $query->result();
     }
 

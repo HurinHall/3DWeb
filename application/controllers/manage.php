@@ -23,7 +23,7 @@ class Manage extends CI_Controller {
             </ul>
           </li>
           </ul>";
-      if($this->session->userdata('name') == "admin"){
+      if($this->session->userdata('role') == "admin"){
               $sql = "SELECT * FROM work ORDER BY id DESC" ;
              
       }else{
@@ -60,8 +60,20 @@ class Manage extends CI_Controller {
             </ul>
           </li>
           </ul>";
+               // check if any race
+           $raceid =""; 
+           $nterm = "";
+          $sql = "SELECT * FROM race WHERE  status = 1 AND remark = 0 ORDER BY id DESC limit 1" ;
+          $query = $this->db->query($sql);
+            foreach($query->result() as $item){
+              $raceid= $item->id;
+              $nterm = $item->nterm;
+            }
 
-      if($this->session->userdata('name') == "admin"){
+            $data['raceid'] = $raceid;
+            $data['nterm'] = $nterm;
+
+      if($this->session->userdata('role') == "admin"){
               //$sql = "SELECT * FROM work ORDER BY id DESC" ;
               // load pagination class
               $this->load->library('pagination');
@@ -174,7 +186,7 @@ class Manage extends CI_Controller {
   public function upload()
   {
     
-      if($this->session->userdata('name')){
+      if($this->session->userdata('role')=='user'){
 
       $data['login']="<ul class=\"nav pull-right\">
           <li class=\"dropdown\">
@@ -208,11 +220,7 @@ class Manage extends CI_Controller {
 
       $race = "NO";
       $status = "1";
-      //$imagename = $filename.'jpg';
-      
-      //var_dump($zipfile);
 
-      //
 
     $path = getcwd().'/models/'.$this->session->userdata('name').'/';
     $zipfile = $path.$filename.'.zip';
@@ -318,7 +326,7 @@ class Manage extends CI_Controller {
               </ul>
             </li>
             </ul>";
-        if($this->session->userdata('name') == "admin"){
+        if($this->session->userdata('role') == "admin"){
                // $sql = "SELECT * FROM work ORDER BY id DESC" ;
           
                
@@ -375,7 +383,7 @@ class Manage extends CI_Controller {
           
 
 
-        if($this->session->userdata('name') == "admin"){
+        if($this->session->userdata('role') == "admin"){
                // $sql = "SELECT * FROM work ORDER BY id DESC" ;
            $this->load->library('pagination');
               $config['base_url'] = site_url('manage/edit');
@@ -492,7 +500,7 @@ class Manage extends CI_Controller {
           </li>
           </ul>";
 
-      if($this->session->userdata('name') == "admin"){
+      if($this->session->userdata('role') == "admin"){
         $this->load->view('manage_race',$data);
       }else{
         $this->load->view('home',$data);
@@ -502,7 +510,7 @@ class Manage extends CI_Controller {
 
     }
 
-  public function publicrace(){
+  public function publishrace(){
     if($_POST){
 
       $title=$_POST['title'];
@@ -516,14 +524,22 @@ class Manage extends CI_Controller {
       $createtime =date('Y-m-d H:i:s',time());
       $publisher=$this->session->userdata('name');
       $status =1;
+      $remark=0;
 
+      $sql = "UPDATE race set status= 0 WHERE status = 1";
+      $query=$this->db->query($sql);
 
-      $sql = "INSERT INTO race (id, title, createtime,ps_datetime,pe_datetime,vs_datetime,ve_datetime,nterm,description,publisher,status) VALUES (null, '$title', '$createtime','$ps_datetime','$pe_datetime', '$vs_datetime','$ve_datetime','$nterm','$description','$publisher',$status)";
+      $sql = "INSERT INTO race (id, title, createtime,ps_datetime,pe_datetime,vs_datetime,ve_datetime,nterm,description,publisher,status,remark) VALUES (null, '$title', '$createtime','$ps_datetime','$pe_datetime', '$vs_datetime','$ve_datetime','$nterm','$description','$publisher',$status,$remark)";
 
        $query=$this->db->query($sql);
           if(!$query){
             echo "<script>alert('Insert Failed !');window.location='".base_url('announcement')."';</script>";
           }else{
+            $sql = "UPDATE user set vote= 0";
+            $query=$this->db->query($sql);
+            $sql = "UPDATE work set voted= 0,race='NO',nterm=0,raceid=0 ";
+            $query=$this->db->query($sql);
+
             echo "<script>alert('Insert Successfully !');window.location='".base_url('announcement')."';</script>";
             
           }
@@ -535,7 +551,7 @@ class Manage extends CI_Controller {
     public function editrace()
     {
       
-        if($this->session->userdata('name') == "admin"){
+        if($this->session->userdata('role') == "admin"){
           $data['login']="<ul class=\"nav pull-right\">
             <li class=\"dropdown\">
               <a href=\"#\" role=\"button\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"> <i class=\"icon-user\"></i> ".$this->session->userdata('name')." <i class=\"caret\"></i>
@@ -564,4 +580,99 @@ class Manage extends CI_Controller {
           echo "<script>window.location='".base_url('announcement')."';</script>";      
         }
     }
+
+
+    public function record_result(){
+
+
+        //存入数据
+        $raceid=$_POST['raceid'];
+        $nterm=$_POST['nterm'];
+        $sql = "SELECT * FROM race WHERE  id ='".$raceid."'";
+        $remark=0;
+        $query = $this->db->query($sql);
+        foreach($query->result() as $item){
+          $remark=$item->remark;
+        }
+        //echo $remark;
+
+        $all_sqls="";
+      /*  $raceer="";
+        $workid="";
+        $download="";
+        $rank="";
+        $voted="";
+        $title="";
+        $objlink="";*/
+        $data = array();
+        $work_id=array();
+        $rank=0;
+        if($remark == 0){
+          //$sql = "SELECT * FROM work WHERE  raceid ='".$raceid."' AND nterm ='".$nterm."'AND race = 'YES' ORDER BY voted DESC LIMIT 0 , 10 ";
+          $sql = "SELECT * FROM work WHERE  raceid ='".$raceid."' AND nterm ='".$nterm."'AND race = 'YES' ORDER BY voted DESC  ";
+          $query = $this->db->query($sql);
+            foreach($query->result() as $item){
+              $raceer=$item->publisher;
+              $workid=$item->id;
+              $download = 'models/'.$item->publisher.'/'.$item->publisher.'_'.$item->createtime.'.zip';
+              $voted=$item->voted;
+              $title=$item->title;
+              $objlink=$item->publisher;
+              $objlink = 'models/'.$item->publisher.'/'.$item->publisher.'_'.$item->createtime.'/'.$item->publisher.'_'.$item->createtime.'.obj';
+              $data[]=$voted;
+              $work_id[]=$workid;
+              $all_sqls ="INSERT INTO raceresult (id,racer,workid,download,raceid,nterm,rank,voted,title,objlink) VALUES (null,'$raceer','$workid','$download','$raceid','$nterm','$rank','$voted','$title','$objlink')";
+              $this->db->query($all_sqls);
+            }
+        
+            if($query->num_rows>0){
+              $rankresult[]=1;
+
+              for($i=0;$i<count($data)-1;$i++){
+                    if($data[$i+1]==$data[$i]){
+                     $rankresult[]=$rankresult[$i];
+                    }else{
+                     $rankresult[]=$i+1+1;
+                    }
+                
+              }
+              for($i=0;$i<count($rankresult);$i++){
+                  $sql = "UPDATE raceresult set rank='".$rankresult[$i]."' WHERE workid ='".$work_id[$i]."' AND raceid='".$raceid."' AND nterm='".$nterm."'";
+                  $this->db->query($sql);
+              }
+
+                  //set the race remark to get the result list.
+              $sql = "UPDATE race set remark= 1 WHERE id ='".$raceid."'";
+              $this->db->query($sql);
+            }
+
+            
+
+          }else{
+
+        }
+            
+ 
+    }
+
+    function raceresult(){
+      
+    }
+
+
+    function close_race(){
+      if($_POST){
+        $raceid=$_POST['raceid'];
+        $sql = "UPDATE race set status= 3 WHERE id ='".$raceid."'";
+        $this->db->query($sql);
+        $sql = "SELECT * FROM race WHERE  id ='".$raceid."'";
+        $query = $this->db->query($sql);
+        foreach($query->result() as $item){
+          echo $item->status;
+        }
+       
+    }
+  }
+
+
 }

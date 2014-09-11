@@ -1,0 +1,78 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Raceresult extends CI_Controller {
+
+  public function __construct(){
+      parent::__construct();
+      $this->load->helper('url');
+      $this->load->library('session');
+      $this->load->database();
+
+    }
+  
+  public function index($nterm=6)
+  {
+          $data['login']="<ul class=\"nav pull-right\">
+            <li class=\"dropdown\">
+              <a href=\"#\" role=\"button\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"> <i class=\"icon-user\"></i> ".$this->session->userdata('name')." <i class=\"caret\"></i>
+
+              </a>
+              <ul class=\"dropdown-menu\">
+                  <li><a href=\"".base_url('/login/logout?url='.base_url('/about'))."\">Logout</a></li>
+              </ul>
+            </li>
+            </ul>";
+        // check if any race
+              $raceid =""; 
+            if($nterm == ""){
+              $sql = "SELECT * FROM race WHERE  status = 1 ORDER BY id DESC limit 1" ;
+              $query = $this->db->query($sql);
+              foreach($query->result() as $item){
+                $raceid= $item->id;
+                $nterm = $item->nterm;
+              }
+            }
+              
+          
+            
+
+            // get all nterm
+              $sql = "SELECT nterm FROM race ORDER BY nterm DESC" ;
+              $query = $this->db->query($sql);
+              $data['nterms'] = $query->result();
+          
+
+          if(strlen($nterm)>0){
+           // echo strlen($nterm);
+              $this->load->library('pagination');
+              $config['base_url'] = site_url('raceresult/index');
+              $this->db->where('nterm', $nterm);
+              $this->db->from('raceresult');
+
+              $config['total_rows'] = $this->db->count_all_results();
+              $config['per_page'] = 10;
+              $config['uri_segment'] = 3;  // 表示第 3 段 URL 为当前页数，如 index.php/控制器/方法/页数，如果表示当前页的 URL 段不是第 3 段，请修改成需要的数值。
+              $config['cur_tag_open'] = ' <a class="current">'; // 当前页开始样式   
+              $config['cur_tag_close'] = '</a>';
+
+              $this->pagination->initialize($config);
+              $this->load->model('Race_model');
+              $data['result'] = $this->Race_model->get_all_result_entries($config['per_page'],$this->uri->segment(3),$nterm);
+              $data['pagelinks'] = $this->pagination->create_links();//创分页链接
+              $this->load->view('raceresult',$data);
+          }else{
+              $this->load->view('raceresult',$data);  
+
+          }
+          
+         
+  }      
+
+    public function index_()
+  {
+          
+          $this->load->view('race_result');  
+         
+  } 
+       
+}

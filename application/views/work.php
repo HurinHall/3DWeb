@@ -47,7 +47,7 @@
             <li class="active"><a href="<?=base_url('/work');?>">Work</a></li>
            <li><a href="<?=base_url('/vote');?>">Vote</a></li>
            <li><a href="<?=base_url('/bbs');?>">BBS</a></li>
-           <li><a href="<?=base_url('/announcement');?>">Announcement</a></li>
+           <li><a href="<?=base_url('/notice');?>">notice</a></li>
            <li><a href="<?=base_url('/contact');?>">Contact</a></li>
           </ul>
          
@@ -71,9 +71,9 @@
                 $imagepath =base_url().'/models/'.$row->publisher.'/'.$row->imagename;
                 $obj = '/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'/'.$row->publisher.'_'.$row->createtime.'.obj';
                 $downloadlink = base_url().'/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'.zip';
-
-                echo "
-                	<div class=\"col-sm-6 col-md-3\">
+/*<a href=\"".$downloadlink."\" target=\"_blank\" class=\"btn btn-primary\" role=\"button\" >Download</a>
+*/                echo "
+          <div class=\"col-sm-6 col-md-3\">
 						<div class=\"thumbnail\">
                             <img src=\"".$imagepath."\" class=\"carousel-inner img-responsive img-rounded\" style=\"width: 260px; height: 180px;\" >
                             <div class=\"caption\">
@@ -82,7 +82,7 @@
                               <h5>Description:".$row->description."</h5>
                               <p>
                               	<a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a>
-                                <a href=\"".$downloadlink."\" target=\"_blank\" class=\"btn btn-primary\" role=\"button\" >Download</a>
+                                
 
                               </p>
                             </div>
@@ -95,29 +95,11 @@
 		?>
 
 		
-<!-- 		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p>...</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">Download</a></p>
-				</div>
-			</div>
-		</div>-->
 	</div> 
 	
 	<div class="row">
-	<!-- <ul class="pagination pull-right">
-		<li><a href="#">&laquo;</a></li>
-		<li class="active"><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li><a href="#">&raquo;</a></li>
-	</ul> -->
-                                       <?php echo $this->pagination->create_links(); ?> 
+
+   <?php echo $this->pagination->create_links(); ?> 
 
 	</div>
     <hr>
@@ -132,7 +114,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close">&times;</button>
-          <h2 class="modal-title">Title</h2>
+          <h2 class="modal-title">3D Show</h2>
         </div>
         <div class="modal-body">
           <center>

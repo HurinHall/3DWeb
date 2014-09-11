@@ -2,7 +2,7 @@
 <html>
     
     <head>
-        <title>Uplaod 3D Model</title>
+        <title>Edit Race</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <!-- Bootstrap -->
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -31,81 +31,7 @@
                             <li class="active">
                                 <a href="<?=base_url('manage')?>">Dashboard</a>
                             </li>
-                            <!-- <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Settings <b class="caret"></b>
-
-                                </a>
-                                <ul class="dropdown-menu" id="menu1">
-                                    <li>
-                                        <a href="#">Tools <i class="icon-arrow-right"></i>
-
-                                        </a>
-                                        <ul class="dropdown-menu sub-menu">
-                                            <li>
-                                                <a href="#">Reports</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Logs</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Errors</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                     <li>
-                                        <a href="#">SEO Settings</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Other Link</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">Other Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Other Link</a>
-                                    </li> 
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Content <i class="caret"></i>
-
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="#">Blog</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">News</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">Custom Pages</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">Calendar</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a tabindex="-1" href="#">FAQ</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Users <i class="caret"></i>
-
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="#">User List</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">Search</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">Permissions</a>
-                                    </li>
-                                </ul>
-                            </li> -->
+                            
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
@@ -118,7 +44,7 @@
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                         
                         <?php 
-                            if($this->session->userdata('name') !='admin'){ ?>
+                            if($this->session->userdata('role') !='admin'){ ?>
                                 <li>
                                     <a href="<?=base_url()?>"><i class="icon-chevron-right"></i> 3D Homepage</a>
                                 </li>
@@ -135,10 +61,8 @@
                                     <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
-                                </li> 
-
-
+                                    <a href="<?=base_url('manage/raceresult')?>"><i class="icon-chevron-right"></i> Race Result</a>
+                                </li>
                            <?php }else{   ?>
 
                                     <li>
@@ -150,14 +74,18 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?=base_url('manage/race')?>"><i class="icon-chevron-right"></i> Public Race</a>
+                                    <a href="<?=base_url('manage/race')?>"><i class="icon-chevron-right"></i> Publish Race</a>
                                 </li>
 
                                 <li>
+                                    <a href="<?=base_url('manage/editrace')?>"><i class="icon-chevron-right"></i> Edit Race</a>
+                                </li>
+                                 <li>
                                     <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
+                                    <a href="<?=base_url('raceresult')?>"><i class="icon-chevron-right"></i> Race Result</a>
+                                </li>
                             <?php }?>
                     </ul>
                 </div>
@@ -174,8 +102,8 @@
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left">
-                                    <a href="<?=base_url('manage/edit')?>">Work List </a> 
-                                    / 
+                                    <!-- <a href="<?=base_url('manage/edit')?>">Work List </a>  -->
+                                     
                                     <a href="<?=base_url('manage/editrace')?>">Race List </a> 
 
                                 </div>
@@ -258,48 +186,7 @@
 
 
                                         
-<!-- 
-                                        <tr class="error">
-                                          <td>1</td>
-                                          <td>Mark</td>
-                                          <td>Otto</td>
-                                          <td>@mdo</td>
-                                          <td>100</td>
-                                          <td >
 
-                                            <form name="updateForm" action="<?=base_url('/manage/deletemywork');?>" stype="float:left; margin: 0;width:50px"  method="post">
-                                                <input name="raceid" value="1" type="hidden">
-                                                <input type="submit" class="btn btn-danger" name="delBtn" value="Delete" >
-                                            </form> 
-                                            <form name="updateForm" action="<?=base_url('/manage/hidemywork');?>"  method="post">
-                                                <input name="raceid" value="1" type="hidden">
-                                                <input type="button" class="btn btn-danger" name="hideBtn" value="Hide" >
-
-                                            </form>  
-                                            <form name="updateForm" action="<?=base_url('/manage/showmywork');?>" style="margin: 0 0 0px;" method="post">
-                                                <input name="raceid" value="1" type="hidden">
-                                                <input type="button" class="btn btn-info" name="showBtn" value="Show" >
-                                            </form>
-                                          </td>
-                                        </tr>    -->                                       
-
-                              <!--           <tr class="info">
-                                          <td>1</td>
-                                          <td>Mark</td>
-                                          <td>Otto</td>
-                                          <td>@mdo</td>
-                                          <td>100</td>
-                                          <td>
-
-                                            
-                                            <button type="button" class="btn btn-danger">Delete</button>
-                                            <button type="button" class="btn btn-success">Hide </button>
-                                            <button type="button" class="btn btn-info">Un-hide</button>
-
-                                          </td>
-                                        </tr>                                        
-
-                                        -->
                                       </tbody>
                                     </table>
                                     <div> <?php echo $this->pagination->create_links(); ?> </div>

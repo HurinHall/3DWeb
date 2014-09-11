@@ -20,14 +20,17 @@ class Login extends CI_Controller {
 			}else{
 				$name="";
 				$id=0;
+				$role="";
 				foreach($query->result() as $item){
 					$name=$item->name;
 					$id = $item->id;
+					$role=$item->role;
 
 			}
 
 				$this->session->set_userdata('name',$name);
 				$this->session->set_userdata('userid',$id);
+				$this->session->set_userdata('role',$role);
 				redirect($_POST['url'],'reload');
 			}
 		}else{

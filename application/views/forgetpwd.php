@@ -48,11 +48,11 @@
             <li><a href="<?=base_url('/work');?>">Work</a></li>
            <li><a href="<?=base_url('/vote');?>">Vote</a></li>
            <li><a href="<?=base_url('/bbs');?>">BBS</a></li>
-           <li><a href="<?=base_url('/announcement');?>">Announcement</a></li>
+           <li><a href="<?=base_url('/notice');?>">notice</a></li>
            <li><a href="<?=base_url('/contact');?>">Contact</a></li>
           </ul>
          
-          <?=$login;?>
+        <!--  <?=$login;?>  -->
         </div><!--/.navbar-collapse -->
       </div>
     </div>
@@ -84,10 +84,8 @@
 			      <div class="form-group">
 				      <div class="col-sm-offset-2 col-sm-10">
 					      <button type="submit" class="btn btn-default">RESET</button>
-                
-
-					  </div>
-				</div>
+					    </div>
+				    </div>
 	      	</form>
 	      </div>
       	</center>

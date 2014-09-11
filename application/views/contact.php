@@ -48,7 +48,7 @@
             <li><a href="<?=base_url('/work');?>">Work</a></li>
            <li><a href="<?=base_url('/vote');?>">Vote</a></li>
            <li><a href="<?=base_url('/bbs');?>">BBS</a></li>
-           <li><a href="<?=base_url('/announcement');?>">Announcement</a></li>
+           <li><a href="<?=base_url('/notice');?>">notice</a></li>
            <li class="active"><a href="<?=base_url('/contact');?>">Contact</a></li>
           </ul>
          
@@ -59,28 +59,28 @@
     
       
 	<div class="container">
-      <div class="page-header">
-	      <h1>Contact</h1>
-	  </div>
-	  <blockquote>
-      <address>
-	      <strong>Twitter, Inc.</strong><br>
-	      795 Folsom Ave, Suite 600<br>
-	      San Francisco, CA 94107<br>
-	      <abbr title="Phone">P:</abbr> (123) 456-7890
-	      <strong>Full Name</strong><br>
-	      <a href="mailto:#">first.last@example.com</a>
-	  </address>
-	  </blockquote>
-	  <br />
-	  <br />
-	  <br />
-	  <br />
-	  <br />
-	  <br />
-	  <br />
-	  <br />
-      <hr>
+
+    <div class=\"jumbotron\" style="height:500px">
+        <div class="page-header">
+          <h1>Contact</h1>
+        </div>
+        <address>
+          <strong>Twitter, Inc.</strong><br>
+          795 Folsom Ave, Suite 600<br>
+          San Francisco, CA 94107<br>
+          <abbr title="Phone">Phone:</abbr> (123) 456-7890<br>
+          <abbr title="Email">Email:</abbr> admin@uic.edu.hk
+        </address>
+     
+       
+
+
+
+        <p><a href="<?=base_url();?>about" class="btn btn-primary btn-lg" role="button">Know more about 3D</a></p>
+    </div>
+
+      
+	  
 
       <footer>
         <p>Copyright &copy; 3D Website</p>

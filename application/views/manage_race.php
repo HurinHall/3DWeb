@@ -2,7 +2,7 @@
 <html>
     
     <head>
-        <title>Uplaod 3D Model</title>
+        <title>Publish Race</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <!-- Bootstrap -->
         <link href="<?=base_url()?>dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -31,81 +31,7 @@
                             <li class="active">
                                 <a href="<?=base_url('manage')?>">Dashboard</a>
                             </li>
-                            <!-- <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Settings <b class="caret"></b>
-
-                                </a>
-                                <ul class="dropdown-menu" id="menu1">
-                                    <li>
-                                        <a href="#">Tools <i class="icon-arrow-right"></i>
-
-                                        </a>
-                                        <ul class="dropdown-menu sub-menu">
-                                            <li>
-                                                <a href="#">Reports</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Logs</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Errors</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                     <li>
-                                        <a href="#">SEO Settings</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Other Link</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">Other Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Other Link</a>
-                                    </li> 
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Content <i class="caret"></i>
-
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="#">Blog</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">News</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">Custom Pages</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">Calendar</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a tabindex="-1" href="#">FAQ</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Users <i class="caret"></i>
-
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="#">User List</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">Search</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">Permissions</a>
-                                    </li>
-                                </ul>
-                            </li> -->
+                           
                         </ul>
                     </div>
                     <!--/.nav-collapse -->
@@ -135,10 +61,8 @@
                                     <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
-                                </li> 
-
-
+                                    <a href="<?=base_url('raceresult')?>"><i class="icon-chevron-right"></i> Race Result</a>
+                                </li>
                            <?php }else{   ?>
 
                                     <li>
@@ -150,15 +74,19 @@
                                 </li>
 
                                 <li>
-                                    <a href="<?=base_url('manage/race')?>"><i class="icon-chevron-right"></i> Public Race</a>
+                                    <a href="<?=base_url('manage/race')?>"><i class="icon-chevron-right"></i> Publish Race</a>
                                 </li>
 
+                               
                                 <li>
+                                    <a href="<?=base_url('manage/editrace')?>"><i class="icon-chevron-right"></i> Edit Race</a>
+                                </li>
+                                 <li>
                                     <a href="<?=base_url('manage/profile')?>"><i class="icon-chevron-right"></i> Profile</a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url('manage/edit')?>"><i class="icon-chevron-right"></i> Edit</a>
-                            <?php }?>
+                                    <a href="<?=base_url('raceresult')?>"><i class="icon-chevron-right"></i> Race Result</a>
+                                </li>                            <?php }?>
                     </ul>
                 </div>
                 
@@ -175,7 +103,7 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
-                                    <form class="form-horizontal" method="post" action="<?=base_url()?>manage/publicrace/" enctype="multipart/form-data"  onsubmit="return check()"/>
+                                    <form class="form-horizontal" method="post" action="<?=base_url()?>manage/publishrace/" enctype="multipart/form-data"  onsubmit="return check()"/>
                                       <fieldset>
                                         <legend>Publish a New Race</legend>
                                         <div class="control-group">
@@ -337,23 +265,6 @@
             }  
             error5=0;
         } 
-
-        
-
-
-/*           
-         
-            function check(){
-              checktitle();
-              checkcontent();
-
-              if($('input#Title').val().length==0||$('select#Category').val().length==0||$('#Description').val().length==0||error1==1||error2==1||error3==1||error4==1){
-                return false;
-              }else{
-                return true;
-              }
-            }*/
-
 
             function checktitle(){
                 if($('input#Title').val().length==0){

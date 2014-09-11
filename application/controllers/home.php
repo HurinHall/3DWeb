@@ -4,8 +4,9 @@ class Home extends CI_Controller {
 
 	public function __construct(){
     	parent::__construct();
-    	$this->load->helper('url');
-    	$this->load->library('session');
+      $this->load->helper('url');
+      $this->load->library('session');
+      $this->load->database();
   	}
 	
 	public function index()
@@ -34,6 +35,20 @@ class Home extends CI_Controller {
             <a class=\"btn btn-success\" href=\"".base_url('/register')."\">Register</a>
           </form>";
 		}
+      $sql = "SELECT * FROM race WHERE  status = 1 ORDER BY id DESC limit 1" ;
+      $query = $this->db->query($sql);
+      $raceid =""; 
+      $nterm = "";
+      $description="";
+        foreach($query->result() as $item){
+          $raceid= $item->id;
+          $nterm = $item->nterm;
+          $description=$item->description;
+        }
+
+        $data['raceid'] = $raceid;
+        $data['nterm'] = $nterm;
+        $data['description']=$description;
 		$this->load->view('home',$data);
 	}
 }

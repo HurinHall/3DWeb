@@ -76,9 +76,34 @@ class Account extends CI_Controller {
       $sql="SELECT * FROM user WHERE name = '".$name."'";
 
       $query=$this->db->query($sql);
-      $data['result']= $query->first_row();
+      $row = $query->first_row();
 
-      $this->load->view('resetnewpwd',$data);
+      $today= date('YmdHis',time()).'';
+      $token_time=$row->token_time;
+      $email = $row->email;
+      $uid =$row->id;
+      $_token= md5($name.$email.$token_time); 
+
+      if(strtotime($today)<strtotime('+1 day',$token_time)){
+        if($token == $_token){
+            $data['result']= $query->first_row();
+            $this->load->view('resetnewpwd',$data);
+        }else{
+           echo "<script>alert('Lapse of time!');window.location='".base_url()."';</script>";
+
+        }
+
+      }else{
+        $sql = "UPDATE user set token_time='".$today."' WHERE id = $uid";
+        $query=$this->db->query($sql);
+        echo "<script>alert('Lapse of time!');window.location='".base_url()."';</script>";
+
+      }
+
+
+
+
+
 
 
      
@@ -86,18 +111,20 @@ class Account extends CI_Controller {
 
 
     function updatepwd(){
-    if($_POST){
-      $password = $_POST['password'];
-      $uid = $_POST['uid'];
-      $sql = "UPDATE user set pwd=md5('$password') WHERE id = $uid";
-      $query=$this->db->query($sql);
-      if(!$query){
-        echo "<script>alert('Rest Password Failed !');window.location='".base_url()."';</script>";
-      }else{
-        echo "<script>alert('Rest Successfully !');window.location='".base_url()."';</script>";
-      }
+      if($_POST){
+        $password = $_POST['password'];
+        $uid = $_POST['uid'];
+        $today= date('YmdHis',time()).'';
 
-    }
+        $sql = "UPDATE user set pwd=md5('$password'), token_time ='".$today."' WHERE id = $uid";
+        $query=$this->db->query($sql);
+        if(!$query){
+          echo "<script>alert('Rest Password Failed !');window.location='".base_url()."';</script>";
+        }else{
+          echo "<script>alert('Rest Successfully !');window.location='".base_url()."';</script>";
+        }
+
+      }
 
     }
 
@@ -124,7 +151,9 @@ class Account extends CI_Controller {
         $config['wordwrap'] = TRUE;  
         $config['mailtype'] = 'html';  
         $this->email->initialize($config);  
-        $token= md5($name.$email); 
+        $token_time = date('YmdHis',time()).'';
+
+        $token= md5($name.$email.$token_time); 
        
 
         $resetlink=base_url()."account/resetnewpwd/".$name."/".$token;          
@@ -137,7 +166,9 @@ class Account extends CI_Controller {
         //$this->email->attach('application\controllers\1.jpeg');           //相对于index.php的路径  
   
         $this->email->send();  
-         echo "<script>alert('Please check your Email and Rest your password!');window.location='".base_url('/account/forgetpwd')."';</script>";
+        $sql = "UPDATE user SET token_time='".  $token_time ."' WHERE name ='". $name."'";
+        $query=$this->db->query($sql);
+        echo "<script>alert('Please check your Email and Rest your password!');window.location='".base_url('/account/forgetpwd')."';</script>";
       }else{
          echo "<script>alert('Name and  Email  DO NOT Match !');window.location='".base_url('/account/forgetpwd')."';</script>";
       }

@@ -11,6 +11,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?=base_url('/css/bootstrap.min.css');?>" rel="stylesheet">
+    <link href="<?=base_url('/css/media.css');?>" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<?=base_url('/css/jumbotron.css');?>" rel="stylesheet">
@@ -24,6 +25,7 @@
     <![endif]-->
         <style type="text/css">
     .container{padding-left: 1px!important;}
+
     </style>
   </head>
 
@@ -47,7 +49,7 @@
             <li><a href="<?=base_url('/work');?>">Work</a></li>
             <li class="active"><a href="<?=base_url('/vote');?>">Vote</a></li>
             <li><a href="<?=base_url('/bbs');?>">BBS</a></li>
-           <li><a href="<?=base_url('/announcement');?>">Announcement</a></li>
+           <li><a href="<?=base_url('/notice');?>">notice</a></li>
             <li><a href="<?=base_url('/contact');?>">Contact</a></li>
            </ul>
          
@@ -60,15 +62,25 @@
 	<div class="container">
 	
 	<div class="page-header">
-	      <!-- <h1>The Most Popular 3D Design In 2014</h1> -->
+	      <h1><?=$racetitle?></h1>
 	</div>
+    <div class="row">
+          <div class="countdown callback"></div>
+          <div class="checkreceresult"></div>
+    </div>
 	  
 	<div class="row">
         <?php 
 
             $imagepath = '';
+            $endDate=$ve_datetime;
+            //$endDate=str_replace('-',',',$endDate);
+            $endDate=date("M j, Y H:i:s",strtotime($ve_datetime));
             foreach ($result as $row)
-            {   
+            {     
+                //$vs_datetime=$row->vs_datetime;
+                //$ve_datetime=$row->ve_datetime;
+              //echo $endDate;
                 $imagepath =base_url().'/models/'.$row->publisher.'/'.$row->imagename;
                 $obj = '/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'/'.$row->publisher.'_'.$row->createtime.'.obj';
                // $downloadlink = base_url().'/models/'.$row->publisher.'/'.$row->publisher.'_'.$row->createtime.'.zip';
@@ -84,7 +96,8 @@
                               <p class=\"text-danger\" id=\"vote".$row->id."\">Vote: ".$row->voted."</p>
                               <p>
                                 <a data-toggle=\"modal\" href=\"#view\" class=\"btn btn-primary\" role=\"button\" onclick=\"loadModel('".$obj ."') \">View</a>
-                                <a class=\"btn btn-success\" role=\"button\" onclick=\"check_vote(".$row->id.")\">Vote</a>
+                                <a class=\"btn btn-success votebtn\" role=\"button\" onclick=\"check_vote(".$row->id.")\" >Vote</a>
+                               
                               </p>
                             </div>
                         </div>
@@ -94,32 +107,12 @@
             }
 
         ?>
-          <!-- <a data-toggle=\"modal\" href=\"".$downloadlink."\" class=\"btn btn-primary\" role=\"button\" >Download</a> -->
-
- 
-<!-- 		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<img src="<?=base_url('/images/vote1.jpg');?>" class="carousel-inner img-responsive img-rounded">
-				<div class="caption">
-					<h3>Thumbnail label</h3>
-					<p class="text-danger">Vote: 100</p>
-					<p><a data-toggle="modal" href="#view" class="btn btn-primary" role="button">View</a> <a class="btn btn-success" role="button">Vote</a></p>
-				</div>
-			</div>
-		</div>  -->
+          
 		
 	</div>
 	
 	<div class="row">
-	<!-- <ul class="pagination pull-right">
-		<li><a href="#">&laquo;</a></li>
-		<li class="active"><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li><a href="#">&raquo;</a></li>
-	</ul> -->
+
     <?php  if(count($result) != 0 ) {echo $this->pagination->create_links(); }?> 
 	</div>
     <hr>
@@ -134,13 +127,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close">&times;</button>
-          <h2 class="modal-title">Title</h2>
+          <h2 class="modal-title">3D Show</h2>
         </div>
         <div class="modal-body">
           <center>
-            <div style="width:520px; margin:auto; position:relative; font-size: 9pt; color: #777777;">
+          <div style="width:520px; margin:auto; position:relative; font-size: 9pt; color: #777777;">
                 <canvas id="cv" style="border: 1px solid;" width="500" height="400" ></canvas>
-            </div>
+          </div>
           </center>
         </div>  
       </div><!-- /.modal-content -->
@@ -151,6 +144,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="<?=base_url('/js/jquery.min.js');?>"></script>
     <script src="<?=base_url('/js/bootstrap.min.js');?>"></script>
+    <script src="<?=base_url('/js/jquery.countdown.js');?>"></script>
+
     <script type="text/javascript" src="<?=base_url('/js/libs/three.js');?>"></script>
     <script type="text/javascript" src="<?=base_url('/js/libs/STLLoader.js');?>"></script>
     <script type="text/javascript" src="<?=base_url('/js/libs/stats.js');?>"></script>
@@ -187,6 +182,66 @@
             viewer.update();
         }
 
+
+
+      $(function() {
+          var endDate = "<?=$endDate?>";
+          //alert(endDate+endDate.length );
+          $(".checkreceresult").hide();
+          if(endDate.length >0){
+            $('.countdown.callback').countdown({
+              date: endDate,
+              render: function(data) {
+                $(this.el).text("Left Time for Voting: "+this.leadingZeros(data.days, 2)+" Days "+this.leadingZeros(data.hours, 2)+":"+this.leadingZeros(data.min, 2)+":"+this.leadingZeros(data.sec, 2));
+              },
+              onEnd: function() {
+                $(this.el).addClass('ended');
+                $(".votebtn").remove();
+                $(".countdown.callback").remove();
+                $('.checkreceresult').show().html("<a href=<?=base_url('raceresult')?>>Please Click here to Check the result!</a>");
+                record_result();
+              }
+            });          
+          }
+            
+            
+
+      });
+            
+
+
+      //to close the current race game status = 3
+      function close_race(){
+        $.ajax({
+          url: "<?=base_url('/manage/close_race')?>",
+          type:"POST",
+          data:{"raceid":"<?= $raceid?>"},
+          success:function(data){
+            if(data == "3"){
+                alert("The Current Race Game is closed!");
+            }
+          }
+          
+        });
+      }
+
+      //insert the result to raceresult and ranking
+      function record_result(){
+        $.ajax({
+          url: "<?=base_url('/manage/record_result')?>",
+          type:"POST",
+          data:{"raceid":"<?= $raceid?>","nterm":"<?= $nterm?>"},
+          success:function(data){
+            //alert(data);
+          }
+         
+          
+        });
+
+      }
+
+
+
        
 
         function check_vote(workid){
@@ -218,7 +273,7 @@
                     }            
               });   
         }
-        // 修改用户已经投票， 并且 修改票数 （这里有问题，有待解决）
+        
         function do_vote(voterid,workid){
           var _json = jQuery.param({ "voterid": voterid, "workid": workid });
            $.ajax({ 
@@ -234,22 +289,6 @@
           }
            });
         }
-      /* //user do vote
-      public function do_vote(voterid,workid){
-        var _json = jQuery.param({ "voterid": voterid, "workid": workid });
-        $.ajax({ 
-          url: "<?=base_url('/vote/do_vote')?>", 
-          type: "POST",
-          data: _json,
-          dataType:"json",
-          //cache:false,
-          success: function(data){
-            if(data==1){
-              alert("Thank you for your vote !");
-            }
-          }
-        });
-      }*/
 
 
      
